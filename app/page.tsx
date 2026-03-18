@@ -132,8 +132,8 @@ function Hero() {
         >
           B.Tech CSE · Data Science & Cloud · LPU
         </p>
-        <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold text-[#a71ef7] leading-[1.0] tracking-tight">
-          Hi,
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#a71ef7] leading-[1.0] tracking-tight">
+          Hello,
           <br />
         </h1>
         <h2 className="text-6xl md:text-8xl lg:text-9xl font-bold text-white leading-[1.0] tracking-tight">
