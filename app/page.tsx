@@ -132,10 +132,14 @@ function Hero() {
         >
           B.Tech CSE · Data Science & Cloud · LPU
         </p>
-        <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold text-white leading-[1.0] tracking-tight">
-          Divya
+        <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold text-[#a71ef7] leading-[1.0] tracking-tight">
+          Hi,
           <br />
         </h1>
+        <h2 className="text-6xl md:text-8xl lg:text-9xl font-bold text-white leading-[1.0] tracking-tight">
+          I Am Divya
+          <br />
+        </h2>
         <p className="max-w-xl text-white/70 text-lg md:text-xl leading-relaxed font-medium">
           Third-year CS student building at the intersection of data science,
           machine learning, and full-stack web. Currently sharpening DSA and
