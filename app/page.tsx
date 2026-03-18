@@ -91,19 +91,19 @@ function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? "bg-[#0a0a0a]/90 backdrop-blur-md border-b border-white/[0.06]" : "bg-transparent"
+        scrolled ? "bg-[#0a0a0a]/95 backdrop-blur-md border-b border-[#9F05F7]/20" : "bg-transparent"
       }`}
     >
       <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <span className="font-mono text-sm text-white/40 tracking-widest uppercase">
-          divya<span className="text-white">.dev</span>
+        <span className="font-mono text-sm text-white/60 tracking-widest uppercase">
+          divya<span className="text-[#DBA5FA] font-bold">.dev</span>
         </span>
         <ul className="hidden md:flex gap-8">
           {NAV_LINKS.map((l) => (
             <li key={l}>
               <a
                 href={`#${l.toLowerCase()}`}
-                className="text-sm text-white/40 hover:text-white transition-colors duration-200 tracking-wide"
+                className="text-sm text-white/50 hover:text-[#DBA5FA] transition-colors duration-200 tracking-wide font-medium"
               >
                 {l}
               </a>
@@ -113,7 +113,7 @@ function Navbar() {
         <a
           href="/resume.pdf"
           download
-          className="text-xs font-mono border border-white/20 text-white/60 hover:text-white hover:border-white/60 px-4 py-2 transition-all duration-200 tracking-widest uppercase"
+          className="text-xs font-mono border border-[#9F05F7]/30 text-[#DBA5FA] hover:text-white hover:bg-[#9F05F7]/20 hover:border-[#DBA5FA] px-4 py-2 transition-all duration-200 tracking-widest uppercase"
         >
           Resume ↓
         </a>
@@ -124,44 +124,47 @@ function Navbar() {
 
 function Hero() {
   return (
-    <section className="min-h-screen flex flex-col justify-center max-w-6xl mx-auto px-6 pt-24 pb-16">
-      <div className="space-y-6">
+    <section className="min-h-screen flex flex-col justify-center max-w-6xl mx-auto px-6 pt-24 pb-16 relative">
+      <div className="space-y-6 relative z-10">
         <p
-          className="font-mono text-xs text-white/30 tracking-[0.3em] uppercase"
+          className="font-mono text-sm text-[#DBA5FA] tracking-[0.3em] uppercase font-medium"
           style={{ animationDelay: "0.1s" }}
         >
-          B.Tech CSE · Data Science &amp; Cloud · LPU
+          B.Tech CSE · Data Science & Cloud · LPU
         </p>
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-light text-white leading-[1.0] tracking-tight">
+        <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold text-white leading-[1.0] tracking-tight">
           Divya
           <br />
-          <span className="text-white/30">Sharma</span>
+          <span className="bg-gradient-to-r from-[#9F05F7] to-[#DBA5FA] bg-clip-text text-transparent">
+            Sharma
+          </span>
         </h1>
-        <p className="max-w-xl text-white/50 text-base md:text-lg leading-relaxed font-light">
+        <p className="max-w-xl text-white/70 text-lg md:text-xl leading-relaxed font-medium">
           Third-year CS student building at the intersection of data science,
           machine learning, and full-stack web. Currently sharpening DSA and
           shipping projects that solve real problems.
         </p>
-        <div className="flex gap-4 pt-2">
+        <div className="flex gap-4 pt-4">
           <a
             href="#projects"
-            className="text-sm text-white bg-white/10 hover:bg-white/20 border border-white/10 hover:border-white/30 px-6 py-3 transition-all duration-200"
+            className="text-sm font-semibold text-white bg-gradient-to-r from-[#9F05F7] to-[#DBA5FA] hover:from-[#8A04D5] hover:to-[#C894F0] px-8 py-4 transition-all duration-200 shadow-lg shadow-[#9F05F7]/25"
           >
             View Projects
           </a>
           <a
             href="#contact"
-            className="text-sm text-white/50 hover:text-white border border-white/10 hover:border-white/30 px-6 py-3 transition-all duration-200"
+            className="text-sm font-semibold text-white/80 hover:text-white border-2 border-[#9F05F7]/30 hover:border-[#DBA5FA] px-8 py-4 transition-all duration-200"
           >
             Get in Touch
           </a>
         </div>
       </div>
 
-      {/* Ambient grid lines */}
+      {/* Ambient grid lines with purple glow */}
       <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:80px_80px]" />
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white/[0.02] rounded-full blur-3xl" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(159,5,247,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(159,5,247,0.03)_1px,transparent_1px)] bg-[size:80px_80px]" />
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#9F05F7]/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-[#DBA5FA]/10 rounded-full blur-3xl" />
       </div>
     </section>
   );
@@ -169,17 +172,17 @@ function Hero() {
 
 function About() {
   return (
-    <section id="about" className="max-w-6xl mx-auto px-6 py-24 border-t border-white/[0.06]">
+    <section id="about" className="max-w-6xl mx-auto px-6 py-24 border-t border-[#9F05F7]/20">
       <div data-reveal className="grid md:grid-cols-[1fr_2fr] gap-16 items-start">
         <div>
-          <p className="font-mono text-xs text-white/25 tracking-[0.25em] uppercase mb-4">
+          <p className="font-mono text-sm text-[#DBA5FA] tracking-[0.25em] uppercase mb-4 font-medium">
             About
           </p>
-          <h2 className="text-3xl font-light text-white">Who I am</h2>
+          <h2 className="text-4xl font-bold text-white">Who I am</h2>
         </div>
-        <div className="space-y-5 text-white/50 text-base leading-relaxed font-light">
+        <div className="space-y-5 text-white/70 text-lg leading-relaxed font-medium">
           <p>
-            I'm Divya Sharma, a 3rd-year B.Tech student in Computer Science &amp;
+            I'm Divya Sharma, a 3rd-year B.Tech student in Computer Science & 
             Engineering at Lovely Professional University, Phagwara — specializing
             in Data Science and Cloud Computing.
           </p>
@@ -195,16 +198,16 @@ function About() {
             I believe the fundamentals matter.
           </p>
 
-          <div className="pt-4 grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="pt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
               { num: "100+", label: "Problems Solved" },
               { num: "3", label: "Major Projects" },
               { num: "6.96", label: "CGPA" },
               { num: "4", label: "Certifications" },
             ].map((s) => (
-              <div key={s.label} className="border border-white/[0.08] p-4">
-                <div className="text-2xl font-light text-white mb-1">{s.num}</div>
-                <div className="text-xs text-white/30 tracking-wide font-mono uppercase">{s.label}</div>
+              <div key={s.label} className="border border-[#9F05F7]/20 bg-gradient-to-br from-[#9F05F7]/5 to-transparent p-5 hover:border-[#DBA5FA]/40 transition-all duration-300">
+                <div className="text-3xl font-bold text-white mb-1 bg-gradient-to-r from-[#9F05F7] to-[#DBA5FA] bg-clip-text text-transparent">{s.num}</div>
+                <div className="text-xs text-white/50 tracking-wide font-mono uppercase font-medium">{s.label}</div>
               </div>
             ))}
           </div>
@@ -216,12 +219,12 @@ function About() {
 
 function Projects() {
   return (
-    <section id="projects" className="max-w-6xl mx-auto px-6 py-24 border-t border-white/[0.06]">
+    <section id="projects" className="max-w-6xl mx-auto px-6 py-24 border-t border-[#9F05F7]/20">
       <div data-reveal className="mb-12">
-        <p className="font-mono text-xs text-white/25 tracking-[0.25em] uppercase mb-4">
+        <p className="font-mono text-sm text-[#DBA5FA] tracking-[0.25em] uppercase mb-4 font-medium">
           Projects
         </p>
-        <h2 className="text-3xl font-light text-white">Selected Work</h2>
+        <h2 className="text-4xl font-bold text-white">Selected Work</h2>
       </div>
 
       <div className="space-y-px">
@@ -230,24 +233,24 @@ function Projects() {
             key={p.num}
             data-reveal
             style={{ transitionDelay: `${i * 80}ms` }}
-            className="group border border-white/[0.06] hover:border-white/20 p-6 md:p-8 transition-all duration-300 hover:bg-white/[0.02] cursor-default"
+            className="group border border-[#9F05F7]/20 hover:border-[#DBA5FA] p-6 md:p-8 transition-all duration-300 hover:bg-gradient-to-r hover:from-[#9F05F7]/5 hover:to-transparent cursor-default"
           >
             <div className="flex items-start justify-between gap-6 flex-wrap">
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-4 mb-3">
-                  <span className="font-mono text-xs text-white/20">{p.num}</span>
-                  <h3 className="text-white font-normal text-lg group-hover:text-white/90 transition-colors">
+                  <span className="font-mono text-sm text-[#9F05F7] font-bold">{p.num}</span>
+                  <h3 className="text-white font-bold text-xl group-hover:text-[#DBA5FA] transition-colors">
                     {p.title}
                   </h3>
                 </div>
-                <p className="text-white/40 text-sm leading-relaxed max-w-2xl font-light">
+                <p className="text-white/60 text-base leading-relaxed max-w-2xl font-medium">
                   {p.desc}
                 </p>
                 <div className="flex flex-wrap gap-2 mt-4">
                   {p.stack.map((t) => (
                     <span
                       key={t}
-                      className="font-mono text-[10px] text-white/25 border border-white/[0.08] px-2 py-1 tracking-widest uppercase"
+                      className="font-mono text-xs text-[#DBA5FA] border border-[#9F05F7]/30 bg-[#9F05F7]/10 px-3 py-1.5 tracking-widest uppercase font-medium"
                     >
                       {t}
                     </span>
@@ -256,7 +259,7 @@ function Projects() {
               </div>
               <a
                 href={p.link}
-                className="text-white/20 group-hover:text-white/60 text-xl transition-all duration-200 flex-shrink-0 mt-1"
+                className="text-[#9F05F7] group-hover:text-[#DBA5FA] text-2xl transition-all duration-200 flex-shrink-0 mt-1 font-bold"
               >
                 ↗
               </a>
@@ -270,25 +273,25 @@ function Projects() {
 
 function Skills() {
   return (
-    <section id="skills" className="max-w-6xl mx-auto px-6 py-24 border-t border-white/[0.06]">
+    <section id="skills" className="max-w-6xl mx-auto px-6 py-24 border-t border-[#9F05F7]/20">
       <div data-reveal className="mb-12">
-        <p className="font-mono text-xs text-white/25 tracking-[0.25em] uppercase mb-4">
+        <p className="font-mono text-sm text-[#DBA5FA] tracking-[0.25em] uppercase mb-4 font-medium">
           Skills
         </p>
-        <h2 className="text-3xl font-light text-white">Toolkit</h2>
+        <h2 className="text-4xl font-bold text-white">Toolkit</h2>
       </div>
 
       <div data-reveal className="grid md:grid-cols-2 gap-8">
         {Object.entries(SKILLS).map(([cat, items]) => (
-          <div key={cat}>
-            <p className="font-mono text-[10px] text-white/20 tracking-[0.2em] uppercase mb-3 border-b border-white/[0.06] pb-2">
+          <div key={cat} className="bg-gradient-to-br from-[#9F05F7]/5 to-transparent p-6 border border-[#9F05F7]/20">
+            <p className="font-mono text-sm text-[#DBA5FA] tracking-[0.2em] uppercase mb-4 border-b border-[#9F05F7]/20 pb-2 font-bold">
               {cat}
             </p>
             <div className="flex flex-wrap gap-2">
               {items.map((s) => (
                 <span
                   key={s}
-                  className="text-sm text-white/50 hover:text-white border border-white/[0.08] hover:border-white/30 px-3 py-1.5 transition-all duration-200 cursor-default"
+                  className="text-base text-white font-medium bg-[#9F05F7]/10 hover:bg-[#9F05F7]/20 border border-[#9F05F7]/30 hover:border-[#DBA5FA] px-4 py-2 transition-all duration-200 cursor-default"
                 >
                   {s}
                 </span>
@@ -300,17 +303,19 @@ function Skills() {
 
       {/* Certificates */}
       <div data-reveal className="mt-16">
-        <p className="font-mono text-xs text-white/25 tracking-[0.25em] uppercase mb-6">
+        <p className="font-mono text-sm text-[#DBA5FA] tracking-[0.25em] uppercase mb-6 font-medium">
           Certificates
         </p>
-        <div className="grid md:grid-cols-2 gap-px bg-white/[0.04]">
+        <div className="grid md:grid-cols-2 gap-4">
           {CERTIFICATES.map((c) => (
-            <div key={c.title} className="bg-[#0a0a0a] p-5 flex items-start justify-between gap-4 hover:bg-white/[0.02] transition-colors group">
-              <div>
-                <p className="text-white/70 text-sm group-hover:text-white transition-colors">{c.title}</p>
-                <p className="text-white/25 text-xs font-mono mt-1">{c.issuer}</p>
+            <div key={c.title} className="bg-gradient-to-br from-[#9F05F7]/5 to-transparent border border-[#9F05F7]/20 p-6 hover:border-[#DBA5FA] transition-all duration-300 group">
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <p className="text-white font-bold text-lg group-hover:text-[#DBA5FA] transition-colors">{c.title}</p>
+                  <p className="text-[#DBA5FA] text-sm font-medium mt-1">{c.issuer}</p>
+                </div>
+                <span className="font-mono text-xs text-white/40 font-medium bg-[#9F05F7]/20 px-3 py-1">{c.year}</span>
               </div>
-              <span className="font-mono text-[10px] text-white/20 flex-shrink-0 mt-0.5">{c.year}</span>
             </div>
           ))}
         </div>
@@ -321,16 +326,16 @@ function Skills() {
 
 function Contact() {
   return (
-    <section id="contact" className="max-w-6xl mx-auto px-6 py-24 border-t border-white/[0.06]">
+    <section id="contact" className="max-w-6xl mx-auto px-6 py-24 border-t border-[#9F05F7]/20">
       <div data-reveal className="grid md:grid-cols-[1fr_2fr] gap-16 items-start">
         <div>
-          <p className="font-mono text-xs text-white/25 tracking-[0.25em] uppercase mb-4">
+          <p className="font-mono text-sm text-[#DBA5FA] tracking-[0.25em] uppercase mb-4 font-medium">
             Contact
           </p>
-          <h2 className="text-3xl font-light text-white">Say hello</h2>
+          <h2 className="text-4xl font-bold text-white">Say hello</h2>
         </div>
         <div className="space-y-6">
-          <p className="text-white/40 text-base leading-relaxed font-light max-w-lg">
+          <p className="text-white/70 text-lg leading-relaxed font-medium max-w-lg">
             Open to internships, collaborations, and interesting projects. Feel
             free to reach out — I usually respond within a day.
           </p>
@@ -345,13 +350,13 @@ function Contact() {
                 href={item.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between border border-white/[0.08] hover:border-white/25 p-4 group transition-all duration-200 hover:bg-white/[0.02]"
+                className="flex items-center justify-between border border-[#9F05F7]/20 hover:border-[#DBA5FA] p-5 group transition-all duration-200 bg-gradient-to-r from-transparent to-transparent hover:from-[#9F05F7]/5 hover:to-transparent"
               >
                 <div className="flex items-center gap-6">
-                  <span className="font-mono text-[10px] text-white/20 tracking-widest uppercase w-16">{item.label}</span>
-                  <span className="text-white/50 group-hover:text-white text-sm transition-colors">{item.value}</span>
+                  <span className="font-mono text-xs text-[#DBA5FA] tracking-widest uppercase w-16 font-bold">{item.label}</span>
+                  <span className="text-white/70 group-hover:text-white text-base font-medium transition-colors">{item.value}</span>
                 </div>
-                <span className="text-white/20 group-hover:text-white/60 transition-colors">↗</span>
+                <span className="text-[#9F05F7] group-hover:text-[#DBA5FA] text-xl transition-colors font-bold">↗</span>
               </a>
             ))}
           </div>
@@ -363,11 +368,11 @@ function Contact() {
 
 function Footer() {
   return (
-    <footer className="border-t border-white/[0.06] max-w-6xl mx-auto px-6 py-8 flex items-center justify-between flex-wrap gap-4">
-      <span className="font-mono text-xs text-white/20 tracking-widest uppercase">
+    <footer className="border-t border-[#9F05F7]/20 max-w-6xl mx-auto px-6 py-8 flex items-center justify-between flex-wrap gap-4">
+      <span className="font-mono text-sm text-white/40 tracking-widest uppercase font-medium">
         Divya Sharma · 2025
       </span>
-      <span className="font-mono text-xs text-white/15">
+      <span className="font-mono text-sm text-[#DBA5FA]/40 font-medium">
         B.Tech CSE · LPU · Phagwara
       </span>
     </footer>
@@ -383,7 +388,7 @@ export default function Home() {
     <main className="bg-[#0a0a0a] min-h-screen relative" style={{ fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif" }}>
       {/* Google font import — add to layout.tsx or globals.css in real project */}
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400&family=DM+Mono:wght@300;400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap');
         html { scroll-behavior: smooth; }
         * { -webkit-font-smoothing: antialiased; }
       `}</style>
