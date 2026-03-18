@@ -135,9 +135,6 @@ function Hero() {
         <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold text-white leading-[1.0] tracking-tight">
           Divya
           <br />
-          <span className="bg-gradient-to-r from-[#9F05F7] to-[#DBA5FA] bg-clip-text text-transparent">
-            Sharma
-          </span>
         </h1>
         <p className="max-w-xl text-white/70 text-lg md:text-xl leading-relaxed font-medium">
           Third-year CS student building at the intersection of data science,
@@ -182,8 +179,8 @@ function About() {
         </div>
         <div className="space-y-5 text-white/70 text-lg leading-relaxed font-medium">
           <p>
-            I'm Divya Sharma, a 3rd-year B.Tech student in Computer Science & 
-            Engineering at Lovely Professional University, Phagwara — specializing
+            I'm Divya, a 3rd-year B.Tech student in Computer Science & 
+            Engineering at Lovely Professional University, specializing
             in Data Science and Cloud Computing.
           </p>
           <p>
@@ -193,7 +190,7 @@ function About() {
             actually work in production.
           </p>
           <p>
-            Outside of projects, I stay consistent on competitive programming —
+            Outside of projects, I stay consistent on competitive programming with
             100+ problems on LeetCode and CodeChef, CodeChef rating 824 (Div 4).
             I believe the fundamentals matter.
           </p>
@@ -336,8 +333,7 @@ function Contact() {
         </div>
         <div className="space-y-6">
           <p className="text-white/70 text-lg leading-relaxed font-medium max-w-lg">
-            Open to internships, collaborations, and interesting projects. Feel
-            free to reach out — I usually respond within a day.
+            Open to internships, collaborations, and interesting projects.
           </p>
           <div className="space-y-3">
             {[
@@ -370,7 +366,7 @@ function Footer() {
   return (
     <footer className="border-t border-[#9F05F7]/20 max-w-6xl mx-auto px-6 py-8 flex items-center justify-between flex-wrap gap-4">
       <span className="font-mono text-sm text-white/40 tracking-widest uppercase font-medium">
-        Divya Sharma · 2025
+        Divya · 2025
       </span>
       <span className="font-mono text-sm text-[#DBA5FA]/40 font-medium">
         B.Tech CSE · LPU · Phagwara
