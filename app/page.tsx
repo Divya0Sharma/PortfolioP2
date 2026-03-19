@@ -13,6 +13,7 @@ const PROJECTS = [
     desc: "K-Means clustering pipeline to segment users by spending behavior and digital engagement. Optimized cluster count via the Elbow Method; integrated Random Forest & KNN for predictive classification with cross-validation.",
     stack: ["Python", "Scikit-learn", "Pandas", "Matplotlib", "Jupyter"],
     link: "#",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
   },
   {
     num: "02",
@@ -20,6 +21,7 @@ const PROJECTS = [
     desc: "Greedy scheduling algorithm in C++ using a Min-Heap Priority Queue to compute the minimum platforms required. Paired with an interactive web UI for real-time input validation and allocation display.",
     stack: ["C++", "STL", "HTML", "CSS", "JavaScript"],
     link: "https://github.com/DivyaSharma",
+    image: "https://images.unsplash.com/photo-1474487548417-781cb71495f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
   },
   {
     num: "03",
@@ -27,6 +29,7 @@ const PROJECTS = [
     desc: "Excel-native BI dashboard built with PivotTables, Power Query, dynamic arrays, and XLOOKUP. Enabled real-time filtering via slicers and conditional formatting to surface actionable trends.",
     stack: ["Excel", "Power Query", "PivotTables", "Data Viz"],
     link: "#",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
   },
   {
     num: "04",
@@ -34,14 +37,37 @@ const PROJECTS = [
     desc: "Full-stack trading platform clone built during Apna College training. Live stock data views, portfolio management, and simulated buy/sell execution through an interactive trading dashboard.",
     stack: ["React", "Node.js", "Bootstrap", "MongoDB"],
     link: "https://github.com/DivyaSharma",
+    image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
   },
 ];
 
 const SKILLS = {
-  Languages: ["C++", "Python", "JavaScript"],
-  "Web & Frameworks": ["React", "Node.js", "HTML & CSS", "Bootstrap"],
-  "Data & ML": ["Pandas", "NumPy", "Scikit-learn", "Matplotlib", "Seaborn"],
-  "Tools & Platforms": ["MySQL", "Git", "GitHub", "Jupyter Notebook", "VSCode", "Excel"],
+  Languages: [
+    { name: "C++", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" },
+    { name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+    { name: "JavaScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+  ],
+  "Web & Frameworks": [
+    { name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+    { name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
+    { name: "HTML & CSS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
+    { name: "Bootstrap", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" },
+  ],
+  "Data & ML": [
+    { name: "Pandas", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" },
+    { name: "NumPy", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" },
+    { name: "Scikit-learn", icon: "https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" },
+    { name: "Matplotlib", icon: "https://upload.wikimedia.org/wikipedia/commons/8/84/Matplotlib_icon.svg" },
+    { name: "Seaborn", icon: "https://seaborn.pydata.org/_images/logo-mark-lightbg.svg" },
+  ],
+  "Tools & Platforms": [
+    { name: "MySQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
+    { name: "Git", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
+    { name: "GitHub", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
+    { name: "Jupyter", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg" },
+    { name: "VSCode", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
+    { name: "Excel", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/excel/excel-original.svg" },
+  ],
 };
 
 const CERTIFICATES = [
@@ -76,6 +102,43 @@ function useReveal() {
     });
     return () => io.disconnect();
   }, []);
+}
+
+// ─── Particle Effect Component ───────────────────────────────────────────────
+
+function ParticleEffect() {
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      const particles = document.querySelector('.particles');
+      if (!particles) return;
+      
+      const particle = document.createElement('div');
+      particle.className = 'particle cursor-particle';
+      particle.style.left = e.clientX + 'px';
+      particle.style.top = e.clientY + 'px';
+      const size = Math.random() * 50 + 10;
+      particle.style.width = size + 'px';
+      particle.style.height = size + 'px';
+      const duration = Math.random() * 20 + 10;
+      particle.style.animationDuration = duration + 's';
+      particles.appendChild(particle);
+      
+      setTimeout(() => {
+        particle.remove();
+      }, duration * 1000);
+    };
+
+    document.addEventListener('mousemove', handleMouseMove);
+    return () => document.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  return (
+    <div className="particles">
+      {[...Array(10)].map((_, i) => (
+        <div key={i} className="particle"></div>
+      ))}
+    </div>
+  );
 }
 
 // ─── Components ──────────────────────────────────────────────────────────────
@@ -127,19 +190,18 @@ function Hero() {
     <section className="min-h-screen flex flex-col justify-center max-w-6xl mx-auto px-6 pt-24 pb-16 relative">
       <div className="space-y-6 relative z-10">
         <p
-          className="font-mono text-sm text-[#DBA5FA] tracking-[0.3em] uppercase font-medium"
+          className="font-mono text-sm text-[#DBA5FA] tracking-[0.3em] uppercase font-medium animate-pulse"
           style={{ animationDelay: "0.1s" }}
         >
           B.Tech CSE · Data Science & Cloud · LPU
         </p>
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#a71ef7] leading-[1.0] tracking-tight">
-          Hello,
+        <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold text-white leading-[1.0] tracking-tight">
+          Divya
           <br />
+          <span className="bg-gradient-to-r from-[#9F05F7] via-[#DBA5FA] to-[#9F05F7] bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient">
+            Sharma
+          </span>
         </h1>
-        <h2 className="text-6xl md:text-8xl lg:text-9xl font-bold text-white leading-[1.0] tracking-tight">
-          I Am Divya
-          <br />
-        </h2>
         <p className="max-w-xl text-white/70 text-lg md:text-xl leading-relaxed font-medium">
           Third-year CS student building at the intersection of data science,
           machine learning, and full-stack web. Currently sharpening DSA and
@@ -148,13 +210,13 @@ function Hero() {
         <div className="flex gap-4 pt-4">
           <a
             href="#projects"
-            className="text-sm font-semibold text-white bg-gradient-to-r from-[#9F05F7] to-[#DBA5FA] hover:from-[#8A04D5] hover:to-[#C894F0] px-8 py-4 transition-all duration-200 shadow-lg shadow-[#9F05F7]/25"
+            className="text-sm font-semibold text-white bg-gradient-to-r from-[#9F05F7] to-[#DBA5FA] hover:from-[#8A04D5] hover:to-[#C894F0] px-8 py-4 transition-all duration-200 shadow-lg shadow-[#9F05F7]/25 hover:shadow-[#DBA5FA]/40 transform hover:-translate-y-1"
           >
             View Projects
           </a>
           <a
             href="#contact"
-            className="text-sm font-semibold text-white/80 hover:text-white border-2 border-[#9F05F7]/30 hover:border-[#DBA5FA] px-8 py-4 transition-all duration-200"
+            className="text-sm font-semibold text-white/80 hover:text-white border-2 border-[#9F05F7]/30 hover:border-[#DBA5FA] px-8 py-4 transition-all duration-200 transform hover:-translate-y-1"
           >
             Get in Touch
           </a>
@@ -164,8 +226,8 @@ function Hero() {
       {/* Ambient grid lines with purple glow */}
       <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(159,5,247,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(159,5,247,0.03)_1px,transparent_1px)] bg-[size:80px_80px]" />
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#9F05F7]/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-[#DBA5FA]/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#9F05F7]/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-[#DBA5FA]/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }} />
       </div>
     </section>
   );
@@ -173,7 +235,7 @@ function Hero() {
 
 function About() {
   return (
-    <section id="about" className="max-w-6xl mx-auto px-6 py-24 border-t border-[#9F05F7]/20">
+    <section id="about" className="max-w-6xl mx-auto px-6 py-24 border-t border-[#9F05F7]/20 relative">
       <div data-reveal className="grid md:grid-cols-[1fr_2fr] gap-16 items-start">
         <div>
           <p className="font-mono text-sm text-[#DBA5FA] tracking-[0.25em] uppercase mb-4 font-medium">
@@ -183,8 +245,8 @@ function About() {
         </div>
         <div className="space-y-5 text-white/70 text-lg leading-relaxed font-medium">
           <p>
-            I'm Divya, a 3rd-year B.Tech student in Computer Science & 
-            Engineering at Lovely Professional University, specializing
+            I'm Divya Sharma, a 3rd-year B.Tech student in Computer Science & 
+            Engineering at Lovely Professional University, Phagwara — specializing
             in Data Science and Cloud Computing.
           </p>
           <p>
@@ -194,7 +256,7 @@ function About() {
             actually work in production.
           </p>
           <p>
-            Outside of projects, I stay consistent on competitive programming with
+            Outside of projects, I stay consistent on competitive programming —
             100+ problems on LeetCode and CodeChef, CodeChef rating 824 (Div 4).
             I believe the fundamentals matter.
           </p>
@@ -206,7 +268,7 @@ function About() {
               { num: "6.96", label: "CGPA" },
               { num: "4", label: "Certifications" },
             ].map((s) => (
-              <div key={s.label} className="border border-[#9F05F7]/20 bg-gradient-to-br from-[#9F05F7]/5 to-transparent p-5 hover:border-[#DBA5FA]/40 transition-all duration-300">
+              <div key={s.label} className="border border-[#9F05F7]/20 bg-gradient-to-br from-[#9F05F7]/5 to-transparent p-5 hover:border-[#DBA5FA]/40 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg hover:shadow-[#9F05F7]/20">
                 <div className="text-3xl font-bold text-white mb-1 bg-gradient-to-r from-[#9F05F7] to-[#DBA5FA] bg-clip-text text-transparent">{s.num}</div>
                 <div className="text-xs text-white/50 tracking-wide font-mono uppercase font-medium">{s.label}</div>
               </div>
@@ -228,15 +290,26 @@ function Projects() {
         <h2 className="text-4xl font-bold text-white">Selected Work</h2>
       </div>
 
-      <div className="space-y-px">
+      <div className="space-y-6">
         {PROJECTS.map((p, i) => (
           <div
             key={p.num}
             data-reveal
             style={{ transitionDelay: `${i * 80}ms` }}
-            className="group border border-[#9F05F7]/20 hover:border-[#DBA5FA] p-6 md:p-8 transition-all duration-300 hover:bg-gradient-to-r hover:from-[#9F05F7]/5 hover:to-transparent cursor-default"
+            className="group border border-[#9F05F7]/20 hover:border-[#DBA5FA] transition-all duration-500 hover:bg-gradient-to-r hover:from-[#9F05F7]/5 hover:to-transparent cursor-default overflow-hidden relative"
           >
-            <div className="flex items-start justify-between gap-6 flex-wrap">
+            <div className="flex flex-col md:flex-row items-start gap-6 p-6 md:p-8">
+              {/* Project Image */}
+              <div className="md:w-1/3 overflow-hidden rounded-lg">
+                <img 
+                  src={p.image} 
+                  alt={p.title}
+                  className="w-full h-48 object-cover transform group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#9F05F7]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              </div>
+              
+              {/* Project Content */}
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-4 mb-3">
                   <span className="font-mono text-sm text-[#9F05F7] font-bold">{p.num}</span>
@@ -258,9 +331,11 @@ function Projects() {
                   ))}
                 </div>
               </div>
+              
+              {/* Link Arrow */}
               <a
                 href={p.link}
-                className="text-[#9F05F7] group-hover:text-[#DBA5FA] text-2xl transition-all duration-200 flex-shrink-0 mt-1 font-bold"
+                className="text-[#9F05F7] group-hover:text-[#DBA5FA] text-2xl transition-all duration-200 flex-shrink-0 mt-1 font-bold transform group-hover:translate-x-1 group-hover:-translate-y-1"
               >
                 ↗
               </a>
@@ -284,18 +359,19 @@ function Skills() {
 
       <div data-reveal className="grid md:grid-cols-2 gap-8">
         {Object.entries(SKILLS).map(([cat, items]) => (
-          <div key={cat} className="bg-gradient-to-br from-[#9F05F7]/5 to-transparent p-6 border border-[#9F05F7]/20">
+          <div key={cat} className="bg-gradient-to-br from-[#9F05F7]/5 to-transparent p-6 border border-[#9F05F7]/20 hover:border-[#DBA5FA]/40 transition-all duration-300 transform hover:-translate-y-1">
             <p className="font-mono text-sm text-[#DBA5FA] tracking-[0.2em] uppercase mb-4 border-b border-[#9F05F7]/20 pb-2 font-bold">
               {cat}
             </p>
-            <div className="flex flex-wrap gap-2">
-              {items.map((s) => (
-                <span
-                  key={s}
-                  className="text-base text-white font-medium bg-[#9F05F7]/10 hover:bg-[#9F05F7]/20 border border-[#9F05F7]/30 hover:border-[#DBA5FA] px-4 py-2 transition-all duration-200 cursor-default"
+            <div className="flex flex-wrap gap-3">
+              {items.map((skill) => (
+                <div
+                  key={skill.name}
+                  className="group flex items-center gap-2 text-white font-medium bg-[#9F05F7]/10 hover:bg-[#9F05F7]/20 border border-[#9F05F7]/30 hover:border-[#DBA5FA] px-4 py-2 transition-all duration-200 cursor-default"
                 >
-                  {s}
-                </span>
+                  <img src={skill.icon} alt={skill.name} className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                  <span>{skill.name}</span>
+                </div>
               ))}
             </div>
           </div>
@@ -309,13 +385,13 @@ function Skills() {
         </p>
         <div className="grid md:grid-cols-2 gap-4">
           {CERTIFICATES.map((c) => (
-            <div key={c.title} className="bg-gradient-to-br from-[#9F05F7]/5 to-transparent border border-[#9F05F7]/20 p-6 hover:border-[#DBA5FA] transition-all duration-300 group">
+            <div key={c.title} className="bg-gradient-to-br from-[#9F05F7]/5 to-transparent border border-[#9F05F7]/20 p-6 hover:border-[#DBA5FA] transition-all duration-300 group transform hover:-translate-y-1">
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <p className="text-white font-bold text-lg group-hover:text-[#DBA5FA] transition-colors">{c.title}</p>
                   <p className="text-[#DBA5FA] text-sm font-medium mt-1">{c.issuer}</p>
                 </div>
-                <span className="font-mono text-xs text-white/40 font-medium bg-[#9F05F7]/20 px-3 py-1">{c.year}</span>
+                <span className="font-mono text-xs text-white/40 font-medium bg-[#9F05F7]/20 px-3 py-1 rounded-full">{c.year}</span>
               </div>
             </div>
           ))}
@@ -337,7 +413,8 @@ function Contact() {
         </div>
         <div className="space-y-6">
           <p className="text-white/70 text-lg leading-relaxed font-medium max-w-lg">
-            Open to internships, collaborations, and interesting projects.
+            Open to internships, collaborations, and interesting projects. Feel
+            free to reach out — I usually respond within a day.
           </p>
           <div className="space-y-3">
             {[
@@ -350,13 +427,13 @@ function Contact() {
                 href={item.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between border border-[#9F05F7]/20 hover:border-[#DBA5FA] p-5 group transition-all duration-200 bg-gradient-to-r from-transparent to-transparent hover:from-[#9F05F7]/5 hover:to-transparent"
+                className="flex items-center justify-between border border-[#9F05F7]/20 hover:border-[#DBA5FA] p-5 group transition-all duration-200 bg-gradient-to-r from-transparent to-transparent hover:from-[#9F05F7]/5 hover:to-transparent transform hover:-translate-y-1"
               >
                 <div className="flex items-center gap-6">
                   <span className="font-mono text-xs text-[#DBA5FA] tracking-widest uppercase w-16 font-bold">{item.label}</span>
                   <span className="text-white/70 group-hover:text-white text-base font-medium transition-colors">{item.value}</span>
                 </div>
-                <span className="text-[#9F05F7] group-hover:text-[#DBA5FA] text-xl transition-colors font-bold">↗</span>
+                <span className="text-[#9F05F7] group-hover:text-[#DBA5FA] text-xl transition-colors font-bold transform group-hover:translate-x-1">↗</span>
               </a>
             ))}
           </div>
@@ -370,7 +447,7 @@ function Footer() {
   return (
     <footer className="border-t border-[#9F05F7]/20 max-w-6xl mx-auto px-6 py-8 flex items-center justify-between flex-wrap gap-4">
       <span className="font-mono text-sm text-white/40 tracking-widest uppercase font-medium">
-        Divya · 2025
+        Divya Sharma · 2025
       </span>
       <span className="font-mono text-sm text-[#DBA5FA]/40 font-medium">
         B.Tech CSE · LPU · Phagwara
@@ -385,21 +462,82 @@ export default function Home() {
   useReveal();
 
   return (
-    <main className="bg-[#0a0a0a] min-h-screen relative" style={{ fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif" }}>
+    <main className="bg-[#0a0a0a] min-h-screen relative overflow-x-hidden" style={{ fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif" }}>
       {/* Google font import — add to layout.tsx or globals.css in real project */}
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap');
+        
         html { scroll-behavior: smooth; }
         * { -webkit-font-smoothing: antialiased; }
+
+        @keyframes gradient {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+
+        @keyframes float {
+          0% { transform: translateY(0) rotate(0deg); opacity: 1; border-radius: 0; }
+          100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; border-radius: 50%; }
+        }
+
+        .animate-gradient {
+          animation: gradient 6s ease infinite;
+          background-size: 200% 200%;
+        }
+
+        .particles {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 0;
+          overflow: hidden;
+          pointer-events: none;
+        }
+
+        .particle {
+          position: absolute;
+          display: block;
+          list-style: none;
+          width: 20px;
+          height: 20px;
+          background: rgba(159, 5, 247, 0.15);
+          animation: float 25s linear infinite;
+          bottom: -150px;
+          border-radius: 50%;
+          filter: blur(1px);
+        }
+
+        .particle.cursor-particle {
+          background: rgba(219, 165, 250, 0.3);
+          filter: blur(2px);
+        }
+
+        .particle:nth-child(1) { left: 25%; width: 80px; height: 80px; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 10%; width: 20px; height: 20px; animation-delay: 2s; animation-duration: 12s; }
+        .particle:nth-child(3) { left: 70%; width: 20px; height: 20px; animation-delay: 4s; }
+        .particle:nth-child(4) { left: 40%; width: 60px; height: 60px; animation-delay: 0s; animation-duration: 18s; }
+        .particle:nth-child(5) { left: 65%; width: 20px; height: 20px; animation-delay: 0s; }
+        .particle:nth-child(6) { left: 75%; width: 110px; height: 110px; animation-delay: 3s; }
+        .particle:nth-child(7) { left: 35%; width: 150px; height: 150px; animation-delay: 7s; }
+        .particle:nth-child(8) { left: 50%; width: 25px; height: 25px; animation-delay: 15s; animation-duration: 45s; }
+        .particle:nth-child(9) { left: 20%; width: 15px; height: 15px; animation-delay: 2s; animation-duration: 35s; }
+        .particle:nth-child(10) { left: 85%; width: 150px; height: 150px; animation-delay: 0s; animation-duration: 11s; }
       `}</style>
 
-      <Navbar />
-      <Hero />
-      <About />
-      <Projects />
-      <Skills />
-      <Contact />
-      <Footer />
+      <ParticleEffect />
+      
+      <div className="relative z-10">
+        <Navbar />
+        <Hero />
+        <About />
+        <Projects />
+        <Skills />
+        <Contact />
+        <Footer />
+      </div>
     </main>
   );
 }
