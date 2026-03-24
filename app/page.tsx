@@ -9,35 +9,45 @@ const NAV_LINKS = ["About", "Projects", "Skills", "Contact"];
 const PROJECTS = [
   {
     num: "01",
-    title: "Credit Card Customer Segmentation",
-    desc: "K-Means clustering pipeline to segment users by spending behavior and digital engagement. Optimized cluster count via the Elbow Method; integrated Random Forest & KNN for predictive classification with cross-validation.",
-    stack: ["Python", "Scikit-learn", "Pandas", "Matplotlib", "Jupyter"],
-    link: "#",
+    title: "Tele-Law Services in India - Data Analysis & Visualization",
+    desc: `A data-driven analysis of legal aid accessibility across states, districts, social categories, and genders in India.`,
+    points: [
+      "Analyzed state-wise and district-wise trends in Tele-Law case registrations",
+      "Examined gender-based legal advice patterns and social category representation (General, OBC, SC, ST)",
+      "Evaluated CSC (Common Service Centers) performance in delivering legal advice",
+      "Implemented predictive analysis and visualizations using Pandas, Seaborn, and Matplotlib"
+    ],
+    stack: ["Python", "Pandas", "Seaborn", "Matplotlib", "Data Analysis"],
+    link: "https://www.linkedin.com/feed/update/urn:li:activity:7316841611781410816/",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
   },
   {
     num: "02",
     title: "Train Platform Allotment System",
-    desc: "Greedy scheduling algorithm in C++ using a Min-Heap Priority Queue to compute the minimum platforms required. Paired with an interactive web UI for real-time input validation and allocation display.",
-    stack: ["C++", "STL", "HTML", "CSS", "JavaScript"],
-    link: "https://github.com/DivyaSharma",
-    image: "https://images.unsplash.com/photo-1474487548417-781cb71495f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    desc: `A greedy scheduling algorithm implementation to optimize train platform allocation and prevent congestion.`,
+    points: [
+      "Implemented Min-Heap Priority Queue to compute minimum platforms required for train schedules",
+      "Developed interactive web UI with real-time input validation and allocation display",
+      "Applied greedy algorithm approach to handle overlapping train schedules efficiently",
+      "Strengthened understanding of data structures and algorithm optimization"
+    ],
+    stack: ["C++", "STL", "HTML", "CSS", "JavaScript", "Data Structures"],
+    link: "https://system-nine-beta.vercel.app/",
+    image: "/tp.jpg",
   },
   {
     num: "03",
-    title: "Population Analysis Dashboard",
-    desc: "Excel-native BI dashboard built with PivotTables, Power Query, dynamic arrays, and XLOOKUP. Enabled real-time filtering via slicers and conditional formatting to surface actionable trends.",
-    stack: ["Excel", "Power Query", "PivotTables", "Data Viz"],
-    link: "#",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    num: "04",
-    title: "Zerodha Clone",
-    desc: "Full-stack trading platform clone built during Apna College training. Live stock data views, portfolio management, and simulated buy/sell execution through an interactive trading dashboard.",
-    stack: ["React", "Node.js", "Bootstrap", "MongoDB"],
-    link: "https://github.com/DivyaSharma",
-    image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    title: "Travel Analytics Dashboard - Power BI",
+    desc: `An interactive business intelligence dashboard transforming travel data into actionable insights.`,
+    points: [
+      "Built dynamic KPI cards tracking total travelers, flights, hotel nights, and revenue metrics",
+      "Analyzed monthly flight trends, booking patterns, and demographic segmentation by company, gender, and age",
+      "Implemented hotel analytics including stay duration, pricing analysis, and location-based insights",
+      "Applied data cleaning, modeling, and DAX measures to create intuitive visual storytelling"
+    ],
+    stack: ["Power BI", "Power Query", "DAX", "Data Modeling", "Dashboard Design"],
+    link: "https://sites.google.com/view/travel2019powerbidashboard/home?pli=1",
+    image: "/ds.jpg",
   },
 ];
 
@@ -158,10 +168,135 @@ function ParticleEffect({ theme }: { theme: Theme }) {
   }, []);
 
   return (
-    <div className={`particles ${theme === "light" ? "opacity-30" : ""}`}>
+    <div className={`particles ${theme === "light" ? "opacity-20" : ""}`}>
       {[...Array(10)].map((_, i) => (
         <div key={i} className="particle"></div>
       ))}
+    </div>
+  );
+}
+
+// ─── Infographics Component ───────────────────────────────────────────────────
+
+function Infographics({ theme }: { theme: Theme }) {
+  const stats = [
+    { label: "Projects Completed", value: "3+", icon: "📊", color: "from-purple-500 to-pink-500" },
+    { label: "Problems Solved", value: "100+", icon: "💻", color: "from-blue-500 to-purple-500" },
+    { label: "Certifications", value: "4", icon: "📜", color: "from-green-500 to-teal-500" },
+    { label: "Tech Skills", value: "15+", icon: "⚙️", color: "from-orange-500 to-red-500" },
+  ];
+
+  const contributions = [
+    { label: "LeetCode", value: "50+", icon: "⚡", color: "from-yellow-500 to-orange-500" },
+    { label: "CodeChef", value: "50+", icon: "🍜", color: "from-brown-500 to-amber-500" },
+    { label: "GitHub Commits", value: "100+", icon: "📈", color: "from-gray-500 to-gray-700" },
+  ];
+
+  return (
+    <div className="py-12">
+      {/* Main Stats Grid */}
+      <div data-reveal className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+        {stats.map((stat, idx) => (
+          <div
+            key={idx}
+            className={`relative overflow-hidden rounded-xl p-6 text-center transition-all duration-300 transform hover:-translate-y-2 ${
+              theme === "dark"
+                ? "bg-gradient-to-br from-[#9F05F7]/10 to-[#DBA5FA]/10 border border-[#9F05F7]/20 hover:border-[#DBA5FA]/40"
+                : "bg-gradient-to-br from-purple-50 to-pink-50 border border-purple-200 hover:border-purple-400 shadow-lg"
+            }`}
+          >
+            <div className={`absolute top-0 right-0 w-20 h-20 rounded-full blur-2xl bg-gradient-to-r ${stat.color} opacity-20`}></div>
+            <div className="text-4xl mb-3">{stat.icon}</div>
+            <div className={`text-3xl font-bold mb-1 bg-gradient-to-r ${stat.color} bg-clip-text text-transparent`}>
+              {stat.value}
+            </div>
+            <div className={`text-sm font-medium ${theme === "dark" ? "text-white/60" : "text-gray-600"}`}>
+              {stat.label}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Contribution Stats */}
+      <div data-reveal className="grid grid-cols-3 gap-4 mb-12">
+        {contributions.map((contrib, idx) => (
+          <div
+            key={idx}
+            className={`rounded-xl p-5 text-center transition-all duration-300 ${
+              theme === "dark"
+                ? "bg-[#9F05F7]/5 border border-[#9F05F7]/20"
+                : "bg-gradient-to-br from-gray-50 to-purple-50 border border-purple-200"
+            }`}
+          >
+            <div className="text-2xl mb-2">{contrib.icon}</div>
+            <div className={`text-xl font-bold ${theme === "dark" ? "text-white" : "text-gray-800"}`}>
+              {contrib.value}
+            </div>
+            <div className={`text-xs font-medium ${theme === "dark" ? "text-white/50" : "text-gray-500"}`}>
+              {contrib.label}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Skill Proficiency Bars */}
+      <div data-reveal className="mb-8">
+        <h3 className={`text-lg font-semibold mb-4 ${theme === "dark" ? "text-white" : "text-gray-800"}`}>
+          Core Competencies
+        </h3>
+        <div className="space-y-3">
+          {[
+            { name: "Data Analysis", level: 85 },
+            { name: "Machine Learning", level: 75 },
+            { name: "Web Development", level: 80 },
+            { name: "Data Structures & Algorithms", level: 85 },
+          ].map((skill) => (
+            <div key={skill.name}>
+              <div className="flex justify-between text-sm mb-1">
+                <span className={theme === "dark" ? "text-white/70" : "text-gray-700"}>{skill.name}</span>
+                <span className={theme === "dark" ? "text-[#DBA5FA]" : "text-[#9F05F7]"}>{skill.level}%</span>
+              </div>
+              <div className={`h-2 rounded-full overflow-hidden ${theme === "dark" ? "bg-white/10" : "bg-gray-200"}`}>
+                <div
+                  className="h-full rounded-full bg-gradient-to-r from-[#9F05F7] to-[#DBA5FA] transition-all duration-1000"
+                  style={{ width: `${skill.level}%` }}
+                ></div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Tech Stack Distribution */}
+      <div data-reveal>
+        <h3 className={`text-lg font-semibold mb-4 ${theme === "dark" ? "text-white" : "text-gray-800"}`}>
+          Technology Stack Distribution
+        </h3>
+        <div className="flex flex-wrap gap-2">
+          {[
+            { name: "Python", percentage: 30, color: "from-blue-500 to-cyan-500" },
+            { name: "C++", percentage: 25, color: "from-blue-600 to-indigo-600" },
+            { name: "JavaScript", percentage: 20, color: "from-yellow-500 to-orange-500" },
+            { name: "SQL", percentage: 15, color: "from-green-500 to-emerald-500" },
+            { name: "Other", percentage: 10, color: "from-purple-500 to-pink-500" },
+          ].map((tech) => (
+            <div key={tech.name} className="flex-1 min-w-[100px]">
+              <div className={`text-xs text-center mb-1 ${theme === "dark" ? "text-white/60" : "text-gray-600"}`}>
+                {tech.name}
+              </div>
+              <div className={`h-20 rounded-lg overflow-hidden bg-gradient-to-b ${tech.color} relative group`}>
+                <div
+                  className="absolute bottom-0 left-0 right-0 bg-black/20 transition-all duration-500 group-hover:bg-black/10"
+                  style={{ height: `${100 - tech.percentage}%` }}
+                ></div>
+                <div className="absolute inset-0 flex items-center justify-center text-white font-bold text-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                  {tech.percentage}%
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
@@ -182,7 +317,7 @@ function Navbar({ theme, toggleTheme }: { theme: Theme; toggleTheme: () => void 
         scrolled 
           ? theme === "dark" 
             ? "bg-[#0a0a0a]/95 backdrop-blur-md border-b border-[#9F05F7]/20" 
-            : "bg-white/95 backdrop-blur-md border-b border-[#9F05F7]/20 shadow-sm"
+            : "bg-white/95 backdrop-blur-md border-b border-purple-200 shadow-sm"
           : theme === "dark" ? "bg-transparent" : "bg-transparent"
       }`}
     >
@@ -212,7 +347,7 @@ function Navbar({ theme, toggleTheme }: { theme: Theme; toggleTheme: () => void 
             className={`p-2 rounded-full transition-all duration-200 ${
               theme === "dark" 
                 ? "border border-[#9F05F7]/30 hover:bg-[#9F05F7]/20 text-[#DBA5FA]" 
-                : "border border-[#9F05F7]/30 hover:bg-[#9F05F7]/10 text-[#9F05F7]"
+                : "border border-purple-300 hover:bg-purple-100 text-[#9F05F7]"
             }`}
             aria-label="Toggle theme"
           >
@@ -224,7 +359,7 @@ function Navbar({ theme, toggleTheme }: { theme: Theme; toggleTheme: () => void 
             className={`text-xs font-mono border px-4 py-2 transition-all duration-200 tracking-widest uppercase ${
               theme === "dark"
                 ? "border-[#9F05F7]/30 text-[#DBA5FA] hover:text-white hover:bg-[#9F05F7]/20 hover:border-[#DBA5FA]"
-                : "border-[#9F05F7]/30 text-[#9F05F7] hover:text-white hover:bg-[#9F05F7] hover:border-[#9F05F7]"
+                : "border-purple-300 text-[#9F05F7] hover:text-white hover:bg-[#9F05F7] hover:border-[#9F05F7]"
             }`}
           >
             Resume ↓
@@ -237,7 +372,7 @@ function Navbar({ theme, toggleTheme }: { theme: Theme; toggleTheme: () => void 
 
 function Hero({ theme }: { theme: Theme }) {
   return (
-    <section className={`min-h-screen flex flex-col justify-center max-w-6xl mx-auto px-6 pt-24 pb-16 relative ${theme === "dark" ? "bg-[#0a0a0a]" : "bg-gray-50"}`}>
+    <section className={`min-h-screen flex flex-col justify-center max-w-6xl mx-auto px-6 pt-24 pb-16 relative ${theme === "dark" ? "bg-[#0a0a0a]" : "bg-gradient-to-br from-gray-50 via-white to-purple-50"}`}>
       <div className="flex flex-col md:flex-row items-center justify-between gap-12 relative z-10">
         {/* Left side - Text Content */}
         <div className="space-y-6 flex-1">
@@ -279,14 +414,14 @@ function Hero({ theme }: { theme: Theme }) {
           </div>
         </div>
 
-        {/* Right side - Photo with professional frame - Taller vertical shape */}
+        {/* Right side - Photo with professional frame */}
         <div className="flex-1 flex justify-center md:justify-end">
           <div className="relative group">
             {/* Animated gradient border */}
             <div className="absolute -inset-1 bg-gradient-to-r from-[#9F05F7] via-[#DBA5FA] to-[#9F05F7] rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-gradient bg-[length:200%_200%]"></div>
             
             {/* Main image container */}
-            <div className={`relative p-1 rounded-2xl ${theme === "dark" ? "bg-[#0a0a0a]" : "bg-gray-50"}`}>
+            <div className={`relative p-1 rounded-2xl ${theme === "dark" ? "bg-[#0a0a0a]" : "bg-white"}`}>
               <div className="relative overflow-hidden rounded-xl">
                 <img
                   src="/IMG_20260324_195242.jpg"
@@ -359,7 +494,7 @@ function About({ theme }: { theme: Theme }) {
               <div key={s.label} className={`border p-5 hover:border-[#DBA5FA]/40 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg ${
                 theme === "dark" 
                   ? "border-[#9F05F7]/20 bg-gradient-to-br from-[#9F05F7]/5 to-transparent hover:shadow-[#9F05F7]/20" 
-                  : "border-gray-200 bg-gray-50 hover:shadow-[#9F05F7]/20"
+                  : "border-gray-200 bg-gradient-to-br from-purple-50 to-white hover:shadow-purple-200"
               }`}>
                 <div className="text-3xl font-bold mb-1 bg-gradient-to-r from-[#9F05F7] to-[#DBA5FA] bg-clip-text text-transparent">{s.num}</div>
                 <div className={`text-xs tracking-wide font-mono uppercase font-medium ${theme === "dark" ? "text-white/50" : "text-gray-500"}`}>{s.label}</div>
@@ -436,7 +571,7 @@ function Projects({ theme }: { theme: Theme }) {
             className={`group border transition-all duration-500 hover:bg-gradient-to-r overflow-hidden relative ${
               theme === "dark"
                 ? "border-[#9F05F7]/20 hover:border-[#DBA5FA] hover:from-[#9F05F7]/5 hover:to-transparent"
-                : "border-gray-200 hover:border-[#9F05F7] hover:from-[#9F05F7]/5 hover:to-transparent"
+                : "border-gray-200 hover:border-[#9F05F7] hover:from-purple-50/50 hover:to-transparent"
             }`}
           >
             <div className="flex flex-col md:flex-row items-start gap-6 p-6 md:p-8">
@@ -513,7 +648,7 @@ function Skills({ theme }: { theme: Theme }) {
           <div key={cat} className={`p-6 border transition-all duration-300 transform hover:-translate-y-1 ${
             theme === "dark"
               ? "bg-gradient-to-br from-[#9F05F7]/5 to-transparent border-[#9F05F7]/20 hover:border-[#DBA5FA]/40"
-              : "bg-gray-50 border-gray-200 hover:border-[#9F05F7]/40"
+              : "bg-gradient-to-br from-purple-50/50 to-white border-gray-200 hover:border-[#9F05F7]/40"
           }`}>
             <p className={`font-mono text-sm tracking-[0.2em] uppercase mb-4 border-b pb-2 font-bold ${
               theme === "dark" 
@@ -529,7 +664,7 @@ function Skills({ theme }: { theme: Theme }) {
                   className={`group flex items-center gap-2 font-medium px-4 py-2 transition-all duration-200 cursor-default ${
                     theme === "dark"
                       ? "text-white bg-[#9F05F7]/10 hover:bg-[#9F05F7]/20 border border-[#9F05F7]/30 hover:border-[#DBA5FA]"
-                      : "text-gray-700 bg-gray-100 hover:bg-[#9F05F7]/10 border border-gray-200 hover:border-[#9F05F7]"
+                      : "text-gray-700 bg-gray-100 hover:bg-purple-100 border border-gray-200 hover:border-[#9F05F7]"
                   }`}
                 >
                   <img src={skill.icon} alt={skill.name} className="w-5 h-5 group-hover:scale-110 transition-transform" />
@@ -541,6 +676,9 @@ function Skills({ theme }: { theme: Theme }) {
         ))}
       </div>
 
+      {/* Infographics Section */}
+      <Infographics theme={theme} />
+
       {/* Training Section */}
       <div data-reveal className="mt-16">
         <p className={`font-mono text-sm tracking-[0.25em] uppercase mb-6 font-medium ${theme === "dark" ? "text-[#DBA5FA]" : "text-[#9F05F7]"}`}>
@@ -550,7 +688,7 @@ function Skills({ theme }: { theme: Theme }) {
           <div className={`border p-6 transition-all duration-300 group transform hover:-translate-y-1 ${
             theme === "dark"
               ? "bg-gradient-to-br from-[#9F05F7]/5 to-transparent border-[#9F05F7]/20 hover:border-[#DBA5FA]"
-              : "bg-gray-50 border-gray-200 hover:border-[#9F05F7]"
+              : "bg-gradient-to-br from-purple-50/50 to-white border-gray-200 hover:border-[#9F05F7]"
           }`}>
             <div className="flex flex-col md:flex-row gap-6 items-start">
               {/* Certificate Preview - Full size visible */}
@@ -584,7 +722,7 @@ function Skills({ theme }: { theme: Theme }) {
                     className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 ${
                       theme === "dark"
                         ? "bg-[#9F05F7]/20 hover:bg-[#9F05F7]/30 text-[#DBA5FA] border border-[#9F05F7]/30"
-                        : "bg-gray-100 hover:bg-[#9F05F7]/10 text-[#9F05F7] border border-gray-300 hover:border-[#9F05F7]"
+                        : "bg-purple-100 hover:bg-purple-200 text-[#9F05F7] border border-purple-300"
                     }`}
                   >
                     <span>Download Certificate</span>
@@ -618,7 +756,7 @@ function Skills({ theme }: { theme: Theme }) {
           <div className={`border p-6 transition-all duration-300 group transform hover:-translate-y-1 ${
             theme === "dark"
               ? "bg-gradient-to-br from-[#9F05F7]/5 to-transparent border-[#9F05F7]/20 hover:border-[#DBA5FA]"
-              : "bg-gray-50 border-gray-200 hover:border-[#9F05F7]"
+              : "bg-gradient-to-br from-purple-50/50 to-white border-gray-200 hover:border-[#9F05F7]"
           }`}>
             <div className="flex flex-col gap-4">
               <div className="relative overflow-hidden rounded-lg bg-gray-100 flex items-center justify-center" style={{ minHeight: "280px" }}>
@@ -644,7 +782,7 @@ function Skills({ theme }: { theme: Theme }) {
                     className={`text-xs px-3 py-1 rounded transition-all duration-200 ${
                       theme === "dark"
                         ? "bg-[#9F05F7]/20 hover:bg-[#9F05F7]/30 text-[#DBA5FA]"
-                        : "bg-gray-100 hover:bg-[#9F05F7]/10 text-[#9F05F7]"
+                        : "bg-purple-100 hover:bg-purple-200 text-[#9F05F7]"
                     }`}
                   >
                     Download ↓
@@ -658,7 +796,7 @@ function Skills({ theme }: { theme: Theme }) {
           <div className={`border p-6 transition-all duration-300 group transform hover:-translate-y-1 ${
             theme === "dark"
               ? "bg-gradient-to-br from-[#9F05F7]/5 to-transparent border-[#9F05F7]/20 hover:border-[#DBA5FA]"
-              : "bg-gray-50 border-gray-200 hover:border-[#9F05F7]"
+              : "bg-gradient-to-br from-purple-50/50 to-white border-gray-200 hover:border-[#9F05F7]"
           }`}>
             <div className="flex flex-col gap-4">
               <div className="relative overflow-hidden rounded-lg bg-gray-100 flex items-center justify-center" style={{ minHeight: "280px" }}>
@@ -684,7 +822,7 @@ function Skills({ theme }: { theme: Theme }) {
                     className={`text-xs px-3 py-1 rounded transition-all duration-200 ${
                       theme === "dark"
                         ? "bg-[#9F05F7]/20 hover:bg-[#9F05F7]/30 text-[#DBA5FA]"
-                        : "bg-gray-100 hover:bg-[#9F05F7]/10 text-[#9F05F7]"
+                        : "bg-purple-100 hover:bg-purple-200 text-[#9F05F7]"
                     }`}
                   >
                     Download ↓
@@ -698,7 +836,7 @@ function Skills({ theme }: { theme: Theme }) {
           <div className={`border p-6 transition-all duration-300 group transform hover:-translate-y-1 ${
             theme === "dark"
               ? "bg-gradient-to-br from-[#9F05F7]/5 to-transparent border-[#9F05F7]/20 hover:border-[#DBA5FA]"
-              : "bg-gray-50 border-gray-200 hover:border-[#9F05F7]"
+              : "bg-gradient-to-br from-purple-50/50 to-white border-gray-200 hover:border-[#9F05F7]"
           }`}>
             <div className="flex flex-col gap-4">
               <div className="relative overflow-hidden rounded-lg bg-gray-100 flex items-center justify-center" style={{ minHeight: "280px" }}>
@@ -724,7 +862,7 @@ function Skills({ theme }: { theme: Theme }) {
                     className={`text-xs px-3 py-1 rounded transition-all duration-200 ${
                       theme === "dark"
                         ? "bg-[#9F05F7]/20 hover:bg-[#9F05F7]/30 text-[#DBA5FA]"
-                        : "bg-gray-100 hover:bg-[#9F05F7]/10 text-[#9F05F7]"
+                        : "bg-purple-100 hover:bg-purple-200 text-[#9F05F7]"
                     }`}
                   >
                     Download ↓
@@ -738,7 +876,7 @@ function Skills({ theme }: { theme: Theme }) {
           <div className={`border p-6 transition-all duration-300 group transform hover:-translate-y-1 ${
             theme === "dark"
               ? "bg-gradient-to-br from-[#9F05F7]/5 to-transparent border-[#9F05F7]/20 hover:border-[#DBA5FA]"
-              : "bg-gray-50 border-gray-200 hover:border-[#9F05F7]"
+              : "bg-gradient-to-br from-purple-50/50 to-white border-gray-200 hover:border-[#9F05F7]"
           }`}>
             <div className="flex flex-col gap-4">
               <div className="relative overflow-hidden rounded-lg bg-gray-100 flex items-center justify-center" style={{ minHeight: "280px" }}>
@@ -764,7 +902,7 @@ function Skills({ theme }: { theme: Theme }) {
                     className={`text-xs px-3 py-1 rounded transition-all duration-200 ${
                       theme === "dark"
                         ? "bg-[#9F05F7]/20 hover:bg-[#9F05F7]/30 text-[#DBA5FA]"
-                        : "bg-gray-100 hover:bg-[#9F05F7]/10 text-[#9F05F7]"
+                        : "bg-purple-100 hover:bg-purple-200 text-[#9F05F7]"
                     }`}
                   >
                     Download ↓
@@ -808,7 +946,7 @@ function Contact({ theme }: { theme: Theme }) {
                 className={`flex items-center justify-between border p-5 group transition-all duration-200 transform hover:-translate-y-1 ${
                   theme === "dark"
                     ? "border-[#9F05F7]/20 hover:border-[#DBA5FA] bg-gradient-to-r from-transparent to-transparent hover:from-[#9F05F7]/5 hover:to-transparent"
-                    : "border-gray-200 hover:border-[#9F05F7] hover:bg-[#9F05F7]/5"
+                    : "border-gray-200 hover:border-[#9F05F7] hover:bg-purple-50"
                 }`}
               >
                 <div className="flex items-center gap-6">
@@ -845,7 +983,7 @@ export default function Home() {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <main className={`min-h-screen relative overflow-x-hidden ${theme === "dark" ? "bg-[#0a0a0a]" : "bg-gray-50"}`} style={{ fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif" }}>
+    <main className={`min-h-screen relative overflow-x-hidden ${theme === "dark" ? "bg-[#0a0a0a]" : "bg-gradient-to-br from-gray-50 via-white to-purple-50"}`} style={{ fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif" }}>
       {/* Google font import — add to layout.tsx or globals.css in real project */}
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap');
