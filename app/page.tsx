@@ -486,27 +486,233 @@ function Skills({ theme }: { theme: Theme }) {
         ))}
       </div>
 
-      {/* Certificates */}
+      {/* Training Section */}
+      <div data-reveal className="mt-16">
+        <p className={`font-mono text-sm tracking-[0.25em] uppercase mb-6 font-medium ${theme === "dark" ? "text-[#DBA5FA]" : "text-[#9F05F7]"}`}>
+          Training
+        </p>
+        <div className="grid md:grid-cols-1 gap-4">
+          <div className={`border p-6 transition-all duration-300 group transform hover:-translate-y-1 ${
+            theme === "dark"
+              ? "bg-gradient-to-br from-[#9F05F7]/5 to-transparent border-[#9F05F7]/20 hover:border-[#DBA5FA]"
+              : "bg-gray-50 border-gray-200 hover:border-[#9F05F7]"
+          }`}>
+            <div className="flex flex-col md:flex-row gap-6 items-start">
+              {/* Certificate Preview */}
+              <div className="md:w-1/3 w-full">
+                <div className="relative overflow-hidden rounded-lg shadow-lg group-hover:shadow-xl transition-all duration-300">
+                  <img
+                    src="/lputraining.pdf"
+                    alt="Logical Building, Programming and Data Structures Certificate"
+                    className="w-full h-48 object-cover transform group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#9F05F7]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </div>
+              </div>
+              
+              {/* Certificate Details */}
+              <div className="flex-1">
+                <div className="flex items-start justify-between gap-4 flex-wrap">
+                  <div>
+                    <p className={`font-bold text-xl group-hover:text-[#DBA5FA] transition-colors ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
+                      Logical Building, Programming and Data Structures
+                    </p>
+                    <p className="text-[#DBA5FA] text-base font-medium mt-2">Lovely Professional University</p>
+                    <p className={`text-sm font-medium mt-1 ${theme === "dark" ? "text-white/40" : "text-gray-500"}`}>
+                      Completed Training Program
+                    </p>
+                  </div>
+                  <a
+                    href="/lputraining.pdf"
+                    download="LPU_Training_Certificate.pdf"
+                    className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 ${
+                      theme === "dark"
+                        ? "bg-[#9F05F7]/20 hover:bg-[#9F05F7]/30 text-[#DBA5FA] border border-[#9F05F7]/30"
+                        : "bg-gray-100 hover:bg-[#9F05F7]/10 text-[#9F05F7] border border-gray-300 hover:border-[#9F05F7]"
+                    }`}
+                  >
+                    <span>Download Certificate</span>
+                    <span>↓</span>
+                  </a>
+                </div>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  <span className="font-mono text-xs px-3 py-1 rounded-full bg-[#9F05F7]/10 text-[#DBA5FA] border border-[#9F05F7]/30">
+                    Programming Fundamentals
+                  </span>
+                  <span className="font-mono text-xs px-3 py-1 rounded-full bg-[#9F05F7]/10 text-[#DBA5FA] border border-[#9F05F7]/30">
+                    Data Structures
+                  </span>
+                  <span className="font-mono text-xs px-3 py-1 rounded-full bg-[#9F05F7]/10 text-[#DBA5FA] border border-[#9F05F7]/30">
+                    Logical Building
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Certificates Section */}
       <div data-reveal className="mt-16">
         <p className={`font-mono text-sm tracking-[0.25em] uppercase mb-6 font-medium ${theme === "dark" ? "text-[#DBA5FA]" : "text-[#9F05F7]"}`}>
           Certificates
         </p>
         <div className="grid md:grid-cols-2 gap-4">
-          {CERTIFICATES.map((c) => (
-            <div key={c.title} className={`border p-6 transition-all duration-300 group transform hover:-translate-y-1 ${
-              theme === "dark"
-                ? "bg-gradient-to-br from-[#9F05F7]/5 to-transparent border-[#9F05F7]/20 hover:border-[#DBA5FA]"
-                : "bg-gray-50 border-gray-200 hover:border-[#9F05F7]"
-            }`}>
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <p className={`font-bold text-lg group-hover:text-[#DBA5FA] transition-colors ${theme === "dark" ? "text-white" : "text-gray-900"}`}>{c.title}</p>
-                  <p className="text-[#DBA5FA] text-sm font-medium mt-1">{c.issuer}</p>
+          {/* Certificate 1 - Cloud Computing NPTEL */}
+          <div className={`border p-6 transition-all duration-300 group transform hover:-translate-y-1 ${
+            theme === "dark"
+              ? "bg-gradient-to-br from-[#9F05F7]/5 to-transparent border-[#9F05F7]/20 hover:border-[#DBA5FA]"
+              : "bg-gray-50 border-gray-200 hover:border-[#9F05F7]"
+          }`}>
+            <div className="flex flex-col gap-4">
+              <div className="relative overflow-hidden rounded-lg h-40">
+                <img
+                  src="/nptel.pdf"
+                  alt="Cloud Computing Certificate"
+                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#9F05F7]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              </div>
+              <div>
+                <div className="flex items-start justify-between gap-4 flex-wrap">
+                  <div>
+                    <p className={`font-bold text-lg group-hover:text-[#DBA5FA] transition-colors ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
+                      Cloud Computing
+                    </p>
+                    <p className="text-[#DBA5FA] text-sm font-medium mt-1">NPTEL</p>
+                  </div>
+                  <a
+                    href="/nptel.pdf"
+                    download="NPTEL_Cloud_Computing.pdf"
+                    className={`text-xs px-3 py-1 rounded transition-all duration-200 ${
+                      theme === "dark"
+                        ? "bg-[#9F05F7]/20 hover:bg-[#9F05F7]/30 text-[#DBA5FA]"
+                        : "bg-gray-100 hover:bg-[#9F05F7]/10 text-[#9F05F7]"
+                    }`}
+                  >
+                    Download ↓
+                  </a>
                 </div>
-                <span className={`font-mono text-xs font-medium px-3 py-1 rounded-full ${theme === "dark" ? "text-white/40 bg-[#9F05F7]/20" : "text-gray-500 bg-gray-200"}`}>{c.year}</span>
               </div>
             </div>
-          ))}
+          </div>
+
+          {/* Certificate 2 - Full Stack Web Development Apna College */}
+          <div className={`border p-6 transition-all duration-300 group transform hover:-translate-y-1 ${
+            theme === "dark"
+              ? "bg-gradient-to-br from-[#9F05F7]/5 to-transparent border-[#9F05F7]/20 hover:border-[#DBA5FA]"
+              : "bg-gray-50 border-gray-200 hover:border-[#9F05F7]"
+          }`}>
+            <div className="flex flex-col gap-4">
+              <div className="relative overflow-hidden rounded-lg h-40">
+                <img
+                  src="/apna.pdf"
+                  alt="Full Stack Web Development Certificate"
+                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#9F05F7]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              </div>
+              <div>
+                <div className="flex items-start justify-between gap-4 flex-wrap">
+                  <div>
+                    <p className={`font-bold text-lg group-hover:text-[#DBA5FA] transition-colors ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
+                      Full Stack Web Development
+                    </p>
+                    <p className="text-[#DBA5FA] text-sm font-medium mt-1">Apna College</p>
+                  </div>
+                  <a
+                    href="/apna.pdf"
+                    download="Apna_College_Full_Stack.pdf"
+                    className={`text-xs px-3 py-1 rounded transition-all duration-200 ${
+                      theme === "dark"
+                        ? "bg-[#9F05F7]/20 hover:bg-[#9F05F7]/30 text-[#DBA5FA]"
+                        : "bg-gray-100 hover:bg-[#9F05F7]/10 text-[#9F05F7]"
+                    }`}
+                  >
+                    Download ↓
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Certificate 3 - Databases and SQL for Data Science with Python */}
+          <div className={`border p-6 transition-all duration-300 group transform hover:-translate-y-1 ${
+            theme === "dark"
+              ? "bg-gradient-to-br from-[#9F05F7]/5 to-transparent border-[#9F05F7]/20 hover:border-[#DBA5FA]"
+              : "bg-gray-50 border-gray-200 hover:border-[#9F05F7]"
+          }`}>
+            <div className="flex flex-col gap-4">
+              <div className="relative overflow-hidden rounded-lg h-40">
+                <img
+                  src="/python.pdf"
+                  alt="Databases and SQL Certificate"
+                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#9F05F7]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              </div>
+              <div>
+                <div className="flex items-start justify-between gap-4 flex-wrap">
+                  <div>
+                    <p className={`font-bold text-lg group-hover:text-[#DBA5FA] transition-colors ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
+                      Databases and SQL for Data Science with Python
+                    </p>
+                    <p className="text-[#DBA5FA] text-sm font-medium mt-1">Coursera</p>
+                  </div>
+                  <a
+                    href="/python.pdf"
+                    download="Coursera_SQL_Data_Science.pdf"
+                    className={`text-xs px-3 py-1 rounded transition-all duration-200 ${
+                      theme === "dark"
+                        ? "bg-[#9F05F7]/20 hover:bg-[#9F05F7]/30 text-[#DBA5FA]"
+                        : "bg-gray-100 hover:bg-[#9F05F7]/10 text-[#9F05F7]"
+                    }`}
+                  >
+                    Download ↓
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Certificate 4 - C Programming CodeChef */}
+          <div className={`border p-6 transition-all duration-300 group transform hover:-translate-y-1 ${
+            theme === "dark"
+              ? "bg-gradient-to-br from-[#9F05F7]/5 to-transparent border-[#9F05F7]/20 hover:border-[#DBA5FA]"
+              : "bg-gray-50 border-gray-200 hover:border-[#9F05F7]"
+          }`}>
+            <div className="flex flex-col gap-4">
+              <div className="relative overflow-hidden rounded-lg h-40">
+                <img
+                  src="/c.pdf"
+                  alt="C Programming Certificate"
+                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#9F05F7]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              </div>
+              <div>
+                <div className="flex items-start justify-between gap-4 flex-wrap">
+                  <div>
+                    <p className={`font-bold text-lg group-hover:text-[#DBA5FA] transition-colors ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
+                      C Programming
+                    </p>
+                    <p className="text-[#DBA5FA] text-sm font-medium mt-1">CodeChef</p>
+                  </div>
+                  <a
+                    href="/c.pdf"
+                    download="CodeChef_C_Programming.pdf"
+                    className={`text-xs px-3 py-1 rounded transition-all duration-200 ${
+                      theme === "dark"
+                        ? "bg-[#9F05F7]/20 hover:bg-[#9F05F7]/30 text-[#DBA5FA]"
+                        : "bg-gray-100 hover:bg-[#9F05F7]/10 text-[#9F05F7]"
+                    }`}
+                  >
+                    Download ↓
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
