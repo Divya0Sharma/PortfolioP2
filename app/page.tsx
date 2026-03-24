@@ -399,8 +399,8 @@ function Projects({ theme }: { theme: Theme }) {
         "Strengthened understanding of data structures and algorithm optimization"
       ],
       stack: ["C++", "STL", "HTML", "CSS", "JavaScript", "Data Structures"],
-      link: "https://github.com/Divya0Sharma/Train_Allotment_System",
-      image: "https://images.unsplash.com/photo-1474487548417-781cb71495f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      link: "https://system-nine-beta.vercel.app/",
+      image: "/tp.jpg",
     },
     {
       num: "03",
