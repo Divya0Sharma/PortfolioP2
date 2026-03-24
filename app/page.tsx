@@ -502,7 +502,7 @@ function Skills({ theme }: { theme: Theme }) {
               <div className="md:w-1/3 w-full">
                 <div className="relative overflow-hidden rounded-lg shadow-lg group-hover:shadow-xl transition-all duration-300">
                   <img
-                    src="/lputraining.pdf"
+                    src="/lpu.jpg"
                     alt="Logical Building, Programming and Data Structures Certificate"
                     className="w-full h-48 object-cover transform group-hover:scale-105 transition-transform duration-500"
                   />
@@ -523,8 +523,8 @@ function Skills({ theme }: { theme: Theme }) {
                     </p>
                   </div>
                   <a
-                    href="/lputraining.pdf"
-                    download="LPU_Training_Certificate.pdf"
+                    href="/lpu.jpg"
+                    download="LPU_Training_Certificate.jpg"
                     className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 ${
                       theme === "dark"
                         ? "bg-[#9F05F7]/20 hover:bg-[#9F05F7]/30 text-[#DBA5FA] border border-[#9F05F7]/30"
@@ -567,7 +567,7 @@ function Skills({ theme }: { theme: Theme }) {
             <div className="flex flex-col gap-4">
               <div className="relative overflow-hidden rounded-lg h-40">
                 <img
-                  src="/nptel.pdf"
+                  src="/np.jpg"
                   alt="Cloud Computing Certificate"
                   className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
                 />
@@ -582,8 +582,8 @@ function Skills({ theme }: { theme: Theme }) {
                     <p className="text-[#DBA5FA] text-sm font-medium mt-1">NPTEL</p>
                   </div>
                   <a
-                    href="/nptel.pdf"
-                    download="NPTEL_Cloud_Computing.pdf"
+                    href="/np.jpg"
+                    download="NPTEL_Cloud_Computing.jpg"
                     className={`text-xs px-3 py-1 rounded transition-all duration-200 ${
                       theme === "dark"
                         ? "bg-[#9F05F7]/20 hover:bg-[#9F05F7]/30 text-[#DBA5FA]"
@@ -606,7 +606,7 @@ function Skills({ theme }: { theme: Theme }) {
             <div className="flex flex-col gap-4">
               <div className="relative overflow-hidden rounded-lg h-40">
                 <img
-                  src="/apna.pdf"
+                  src="/a.jpg"
                   alt="Full Stack Web Development Certificate"
                   className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
                 />
@@ -621,8 +621,8 @@ function Skills({ theme }: { theme: Theme }) {
                     <p className="text-[#DBA5FA] text-sm font-medium mt-1">Apna College</p>
                   </div>
                   <a
-                    href="/apna.pdf"
-                    download="Apna_College_Full_Stack.pdf"
+                    href="/a.jpg"
+                    download="Apna_College_Full_Stack.jpg"
                     className={`text-xs px-3 py-1 rounded transition-all duration-200 ${
                       theme === "dark"
                         ? "bg-[#9F05F7]/20 hover:bg-[#9F05F7]/30 text-[#DBA5FA]"
@@ -645,7 +645,7 @@ function Skills({ theme }: { theme: Theme }) {
             <div className="flex flex-col gap-4">
               <div className="relative overflow-hidden rounded-lg h-40">
                 <img
-                  src="/python.pdf"
+                  src="/py.jpg"
                   alt="Databases and SQL Certificate"
                   className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
                 />
@@ -660,8 +660,8 @@ function Skills({ theme }: { theme: Theme }) {
                     <p className="text-[#DBA5FA] text-sm font-medium mt-1">Coursera</p>
                   </div>
                   <a
-                    href="/python.pdf"
-                    download="Coursera_SQL_Data_Science.pdf"
+                    href="/py.jpg"
+                    download="Coursera_SQL_Data_Science.jpg"
                     className={`text-xs px-3 py-1 rounded transition-all duration-200 ${
                       theme === "dark"
                         ? "bg-[#9F05F7]/20 hover:bg-[#9F05F7]/30 text-[#DBA5FA]"
@@ -684,7 +684,7 @@ function Skills({ theme }: { theme: Theme }) {
             <div className="flex flex-col gap-4">
               <div className="relative overflow-hidden rounded-lg h-40">
                 <img
-                  src="/c.pdf"
+                  src="/c.jpg"
                   alt="C Programming Certificate"
                   className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
                 />
@@ -699,8 +699,8 @@ function Skills({ theme }: { theme: Theme }) {
                     <p className="text-[#DBA5FA] text-sm font-medium mt-1">CodeChef</p>
                   </div>
                   <a
-                    href="/c.pdf"
-                    download="CodeChef_C_Programming.pdf"
+                    href="/c.jpg"
+                    download="CodeChef_C_Programming.jpg"
                     className={`text-xs px-3 py-1 rounded transition-all duration-200 ${
                       theme === "dark"
                         ? "bg-[#9F05F7]/20 hover:bg-[#9F05F7]/30 text-[#DBA5FA]"
