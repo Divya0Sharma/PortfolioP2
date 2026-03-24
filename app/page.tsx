@@ -498,13 +498,14 @@ function Skills({ theme }: { theme: Theme }) {
               : "bg-gray-50 border-gray-200 hover:border-[#9F05F7]"
           }`}>
             <div className="flex flex-col md:flex-row gap-6 items-start">
-              {/* Certificate Preview */}
-              <div className="md:w-1/3 w-full">
-                <div className="relative overflow-hidden rounded-lg shadow-lg group-hover:shadow-xl transition-all duration-300">
+              {/* Certificate Preview - Full size visible */}
+              <div className="md:w-2/5 w-full">
+                <div className="relative overflow-hidden rounded-lg shadow-lg group-hover:shadow-xl transition-all duration-300 bg-gray-100">
                   <img
                     src="/lpu.jpg"
                     alt="Logical Building, Programming and Data Structures Certificate"
-                    className="w-full h-48 object-cover transform group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-auto object-contain transform group-hover:scale-105 transition-transform duration-500"
+                    style={{ maxHeight: "300px" }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#9F05F7]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </div>
@@ -557,7 +558,7 @@ function Skills({ theme }: { theme: Theme }) {
         <p className={`font-mono text-sm tracking-[0.25em] uppercase mb-6 font-medium ${theme === "dark" ? "text-[#DBA5FA]" : "text-[#9F05F7]"}`}>
           Certificates
         </p>
-        <div className="grid md:grid-cols-2 gap-4">
+        <div className="grid md:grid-cols-2 gap-6">
           {/* Certificate 1 - Cloud Computing NPTEL */}
           <div className={`border p-6 transition-all duration-300 group transform hover:-translate-y-1 ${
             theme === "dark"
@@ -565,11 +566,12 @@ function Skills({ theme }: { theme: Theme }) {
               : "bg-gray-50 border-gray-200 hover:border-[#9F05F7]"
           }`}>
             <div className="flex flex-col gap-4">
-              <div className="relative overflow-hidden rounded-lg h-40">
+              <div className="relative overflow-hidden rounded-lg bg-gray-100 flex items-center justify-center" style={{ minHeight: "280px" }}>
                 <img
                   src="/np.jpg"
                   alt="Cloud Computing Certificate"
-                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-auto object-contain transform group-hover:scale-105 transition-transform duration-500"
+                  style={{ maxHeight: "280px" }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#9F05F7]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
@@ -604,11 +606,12 @@ function Skills({ theme }: { theme: Theme }) {
               : "bg-gray-50 border-gray-200 hover:border-[#9F05F7]"
           }`}>
             <div className="flex flex-col gap-4">
-              <div className="relative overflow-hidden rounded-lg h-40">
+              <div className="relative overflow-hidden rounded-lg bg-gray-100 flex items-center justify-center" style={{ minHeight: "280px" }}>
                 <img
                   src="/a.jpg"
                   alt="Full Stack Web Development Certificate"
-                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-auto object-contain transform group-hover:scale-105 transition-transform duration-500"
+                  style={{ maxHeight: "280px" }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#9F05F7]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
@@ -643,11 +646,12 @@ function Skills({ theme }: { theme: Theme }) {
               : "bg-gray-50 border-gray-200 hover:border-[#9F05F7]"
           }`}>
             <div className="flex flex-col gap-4">
-              <div className="relative overflow-hidden rounded-lg h-40">
+              <div className="relative overflow-hidden rounded-lg bg-gray-100 flex items-center justify-center" style={{ minHeight: "280px" }}>
                 <img
                   src="/py.jpg"
                   alt="Databases and SQL Certificate"
-                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-auto object-contain transform group-hover:scale-105 transition-transform duration-500"
+                  style={{ maxHeight: "280px" }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#9F05F7]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
@@ -682,11 +686,12 @@ function Skills({ theme }: { theme: Theme }) {
               : "bg-gray-50 border-gray-200 hover:border-[#9F05F7]"
           }`}>
             <div className="flex flex-col gap-4">
-              <div className="relative overflow-hidden rounded-lg h-40">
+              <div className="relative overflow-hidden rounded-lg bg-gray-100 flex items-center justify-center" style={{ minHeight: "280px" }}>
                 <img
                   src="/c.jpg"
                   alt="C Programming Certificate"
-                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-auto object-contain transform group-hover:scale-105 transition-transform duration-500"
+                  style={{ maxHeight: "280px" }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#9F05F7]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
