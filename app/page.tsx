@@ -238,42 +238,75 @@ function Navbar({ theme, toggleTheme }: { theme: Theme; toggleTheme: () => void 
 function Hero({ theme }: { theme: Theme }) {
   return (
     <section className={`min-h-screen flex flex-col justify-center max-w-6xl mx-auto px-6 pt-24 pb-16 relative ${theme === "dark" ? "bg-[#0a0a0a]" : "bg-gray-50"}`}>
-      <div className="space-y-6 relative z-10">
-        <p
-          className={`font-mono text-sm tracking-[0.3em] uppercase font-medium ${theme === "dark" ? "text-[#DBA5FA]" : "text-[#9F05F7]"}`}
-          style={{ animationDelay: "0.1s" }}
-        >
-          B.Tech CSE · Data Science & Cloud · LPU
-        </p>
-        <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold leading-[1.0] tracking-tight">
-          <span className={theme === "dark" ? "text-white" : "text-gray-900"}>Divya</span>
-          <br />
-          <span className="bg-gradient-to-r from-[#9F05F7] via-[#DBA5FA] to-[#9F05F7] bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient">
-            Sharma
-          </span>
-        </h1>
-        <p className={`max-w-xl text-lg md:text-xl leading-relaxed font-medium ${theme === "dark" ? "text-white/70" : "text-gray-600"}`}>
-          Third-year CS student building at the intersection of data science,
-          machine learning, and full-stack web. Currently sharpening DSA and
-          shipping projects that solve real problems.
-        </p>
-        <div className="flex gap-4 pt-4">
-          <a
-            href="#projects"
-            className="text-sm font-semibold text-white bg-gradient-to-r from-[#9F05F7] to-[#DBA5FA] hover:from-[#8A04D5] hover:to-[#C894F0] px-8 py-4 transition-all duration-200 shadow-lg shadow-[#9F05F7]/25 hover:shadow-[#DBA5FA]/40 transform hover:-translate-y-1"
+      <div className="flex flex-col md:flex-row items-center justify-between gap-12 relative z-10">
+        {/* Left side - Text Content */}
+        <div className="space-y-6 flex-1">
+          <p
+            className={`font-mono text-sm tracking-[0.3em] uppercase font-medium ${theme === "dark" ? "text-[#DBA5FA]" : "text-[#9F05F7]"}`}
+            style={{ animationDelay: "0.1s" }}
           >
-            View Projects
-          </a>
-          <a
-            href="#contact"
-            className={`text-sm font-semibold border-2 px-8 py-4 transition-all duration-200 transform hover:-translate-y-1 ${
-              theme === "dark"
-                ? "text-white/80 hover:text-white border-[#9F05F7]/30 hover:border-[#DBA5FA]"
-                : "text-gray-600 hover:text-[#9F05F7] border-gray-300 hover:border-[#9F05F7]"
-            }`}
-          >
-            Get in Touch
-          </a>
+            B.Tech CSE · Data Science & Cloud · LPU
+          </p>
+          <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold leading-[1.0] tracking-tight">
+            <span className={theme === "dark" ? "text-white" : "text-gray-900"}>Divya</span>
+            <br />
+            <span className="bg-gradient-to-r from-[#9F05F7] via-[#DBA5FA] to-[#9F05F7] bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient">
+              Sharma
+            </span>
+          </h1>
+          <p className={`max-w-xl text-lg md:text-xl leading-relaxed font-medium ${theme === "dark" ? "text-white/70" : "text-gray-600"}`}>
+            Third-year CS student building at the intersection of data science,
+            machine learning, and full-stack web. Currently sharpening DSA and
+            shipping projects that solve real problems.
+          </p>
+          <div className="flex gap-4 pt-4">
+            <a
+              href="#projects"
+              className="text-sm font-semibold text-white bg-gradient-to-r from-[#9F05F7] to-[#DBA5FA] hover:from-[#8A04D5] hover:to-[#C894F0] px-8 py-4 transition-all duration-200 shadow-lg shadow-[#9F05F7]/25 hover:shadow-[#DBA5FA]/40 transform hover:-translate-y-1"
+            >
+              View Projects
+            </a>
+            <a
+              href="#contact"
+              className={`text-sm font-semibold border-2 px-8 py-4 transition-all duration-200 transform hover:-translate-y-1 ${
+                theme === "dark"
+                  ? "text-white/80 hover:text-white border-[#9F05F7]/30 hover:border-[#DBA5FA]"
+                  : "text-gray-600 hover:text-[#9F05F7] border-gray-300 hover:border-[#9F05F7]"
+              }`}
+            >
+              Get in Touch
+            </a>
+          </div>
+        </div>
+
+        {/* Right side - Photo with professional frame */}
+        <div className="flex-1 flex justify-center md:justify-end">
+          <div className="relative group">
+            {/* Animated gradient border */}
+            <div className="absolute -inset-1 bg-gradient-to-r from-[#9F05F7] via-[#DBA5FA] to-[#9F05F7] rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-gradient bg-[length:200%_200%]"></div>
+            
+            {/* Main image container */}
+            <div className={`relative p-1 rounded-2xl ${theme === "dark" ? "bg-[#0a0a0a]" : "bg-gray-50"}`}>
+              <div className="relative overflow-hidden rounded-xl">
+                <img
+                  src="/IMG_20260324_195242.jpg"
+                  alt="Divya Sharma"
+                  className="w-80 h-80 md:w-96 md:h-96 object-cover rounded-xl transform transition-all duration-500 group-hover:scale-105"
+                />
+                
+                {/* Overlay gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#9F05F7]/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl"></div>
+                
+                {/* Decorative elements */}
+                <div className="absolute -bottom-3 -right-3 w-24 h-24 bg-gradient-to-r from-[#9F05F7]/20 to-[#DBA5FA]/20 rounded-full blur-2xl group-hover:blur-3xl transition-all duration-500"></div>
+                <div className="absolute -top-3 -left-3 w-24 h-24 bg-gradient-to-r from-[#DBA5FA]/20 to-[#9F05F7]/20 rounded-full blur-2xl group-hover:blur-3xl transition-all duration-500"></div>
+              </div>
+            </div>
+            
+            {/* Professional frame accent lines */}
+            <div className="absolute -top-2 -left-2 w-12 h-12 border-t-2 border-l-2 border-[#9F05F7] rounded-tl-xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+            <div className="absolute -bottom-2 -right-2 w-12 h-12 border-b-2 border-r-2 border-[#DBA5FA] rounded-br-xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+          </div>
         </div>
       </div>
 
