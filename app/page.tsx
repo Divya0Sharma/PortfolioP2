@@ -104,9 +104,34 @@ function useReveal() {
   }, []);
 }
 
+// ─── Theme Context ────────────────────────────────────────────────────────────
+
+type Theme = "dark" | "light";
+
+function useTheme() {
+  const [theme, setTheme] = useState<Theme>("dark");
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme") as Theme | null;
+    if (savedTheme) {
+      setTheme(savedTheme);
+      document.documentElement.classList.toggle("light", savedTheme === "light");
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = theme === "dark" ? "light" : "dark";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+    document.documentElement.classList.toggle("light", newTheme === "light");
+  };
+
+  return { theme, toggleTheme };
+}
+
 // ─── Particle Effect Component ───────────────────────────────────────────────
 
-function ParticleEffect() {
+function ParticleEffect({ theme }: { theme: Theme }) {
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       const particles = document.querySelector('.particles');
@@ -133,7 +158,7 @@ function ParticleEffect() {
   }, []);
 
   return (
-    <div className="particles">
+    <div className={`particles ${theme === "light" ? "opacity-30" : ""}`}>
       {[...Array(10)].map((_, i) => (
         <div key={i} className="particle"></div>
       ))}
@@ -143,7 +168,7 @@ function ParticleEffect() {
 
 // ─── Components ──────────────────────────────────────────────────────────────
 
-function Navbar() {
+function Navbar({ theme, toggleTheme }: { theme: Theme; toggleTheme: () => void }) {
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 40);
@@ -154,55 +179,80 @@ function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? "bg-[#0a0a0a]/95 backdrop-blur-md border-b border-[#9F05F7]/20" : "bg-transparent"
+        scrolled 
+          ? theme === "dark" 
+            ? "bg-[#0a0a0a]/95 backdrop-blur-md border-b border-[#9F05F7]/20" 
+            : "bg-white/95 backdrop-blur-md border-b border-[#9F05F7]/20 shadow-sm"
+          : theme === "dark" ? "bg-transparent" : "bg-transparent"
       }`}
     >
       <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <span className="font-mono text-sm text-white/60 tracking-widest uppercase">
-          divya<span className="text-[#DBA5FA] font-bold">.dev</span>
+        <span className={`font-mono text-sm tracking-widest uppercase ${theme === "dark" ? "text-white/60" : "text-gray-600"}`}>
+          divya<span className={`font-bold ${theme === "dark" ? "text-[#DBA5FA]" : "text-[#9F05F7]"}`}>.dev</span>
         </span>
         <ul className="hidden md:flex gap-8">
           {NAV_LINKS.map((l) => (
             <li key={l}>
               <a
                 href={`#${l.toLowerCase()}`}
-                className="text-sm text-white/50 hover:text-[#DBA5FA] transition-colors duration-200 tracking-wide font-medium"
+                className={`text-sm transition-colors duration-200 tracking-wide font-medium ${
+                  theme === "dark" 
+                    ? "text-white/50 hover:text-[#DBA5FA]" 
+                    : "text-gray-600 hover:text-[#9F05F7]"
+                }`}
               >
                 {l}
               </a>
             </li>
           ))}
         </ul>
-        <a
-          href="/resume.pdf"
-          download
-          className="text-xs font-mono border border-[#9F05F7]/30 text-[#DBA5FA] hover:text-white hover:bg-[#9F05F7]/20 hover:border-[#DBA5FA] px-4 py-2 transition-all duration-200 tracking-widest uppercase"
-        >
-          Resume ↓
-        </a>
+        <div className="flex items-center gap-4">
+          <button
+            onClick={toggleTheme}
+            className={`p-2 rounded-full transition-all duration-200 ${
+              theme === "dark" 
+                ? "border border-[#9F05F7]/30 hover:bg-[#9F05F7]/20 text-[#DBA5FA]" 
+                : "border border-[#9F05F7]/30 hover:bg-[#9F05F7]/10 text-[#9F05F7]"
+            }`}
+            aria-label="Toggle theme"
+          >
+            {theme === "dark" ? "☀️" : "🌙"}
+          </button>
+          <a
+            href="/resume.pdf"
+            download
+            className={`text-xs font-mono border px-4 py-2 transition-all duration-200 tracking-widest uppercase ${
+              theme === "dark"
+                ? "border-[#9F05F7]/30 text-[#DBA5FA] hover:text-white hover:bg-[#9F05F7]/20 hover:border-[#DBA5FA]"
+                : "border-[#9F05F7]/30 text-[#9F05F7] hover:text-white hover:bg-[#9F05F7] hover:border-[#9F05F7]"
+            }`}
+          >
+            Resume ↓
+          </a>
+        </div>
       </nav>
     </header>
   );
 }
 
-function Hero() {
+function Hero({ theme }: { theme: Theme }) {
   return (
-    <section className="min-h-screen flex flex-col justify-center max-w-6xl mx-auto px-6 pt-24 pb-16 relative">
+    <section className={`min-h-screen flex flex-col justify-center max-w-6xl mx-auto px-6 pt-24 pb-16 relative ${theme === "dark" ? "bg-[#0a0a0a]" : "bg-gray-50"}`}>
       <div className="space-y-6 relative z-10">
         <p
-          className="font-mono text-sm text-[#DBA5FA] tracking-[0.3em] uppercase font-medium animate-pulse"
+          className={`font-mono text-sm tracking-[0.3em] uppercase font-medium ${theme === "dark" ? "text-[#DBA5FA]" : "text-[#9F05F7]"}`}
           style={{ animationDelay: "0.1s" }}
         >
           B.Tech CSE · Data Science & Cloud · LPU
         </p>
-        <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold text-white leading-[1.0] tracking-tight">
-          Divya
+        <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold leading-[1.0] tracking-tight">
+          <span className={theme === "dark" ? "text-white" : "text-gray-900"}>Divya</span>
           <br />
           <span className="bg-gradient-to-r from-[#9F05F7] via-[#DBA5FA] to-[#9F05F7] bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient">
             Sharma
           </span>
         </h1>
-        <p className="max-w-xl text-white/70 text-lg md:text-xl leading-relaxed font-medium">
+        <p className={`max-w-xl text-lg md:text-xl leading-relaxed font-medium ${theme === "dark" ? "text-white/70" : "text-gray-600"}`}>
           Third-year CS student building at the intersection of data science,
           machine learning, and full-stack web. Currently sharpening DSA and
           shipping projects that solve real problems.
@@ -216,7 +266,11 @@ function Hero() {
           </a>
           <a
             href="#contact"
-            className="text-sm font-semibold text-white/80 hover:text-white border-2 border-[#9F05F7]/30 hover:border-[#DBA5FA] px-8 py-4 transition-all duration-200 transform hover:-translate-y-1"
+            className={`text-sm font-semibold border-2 px-8 py-4 transition-all duration-200 transform hover:-translate-y-1 ${
+              theme === "dark"
+                ? "text-white/80 hover:text-white border-[#9F05F7]/30 hover:border-[#DBA5FA]"
+                : "text-gray-600 hover:text-[#9F05F7] border-gray-300 hover:border-[#9F05F7]"
+            }`}
           >
             Get in Touch
           </a>
@@ -225,7 +279,7 @@ function Hero() {
 
       {/* Ambient grid lines with purple glow */}
       <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(159,5,247,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(159,5,247,0.03)_1px,transparent_1px)] bg-[size:80px_80px]" />
+        <div className={`absolute inset-0 bg-[linear-gradient(to_right,rgba(159,5,247,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(159,5,247,0.03)_1px,transparent_1px)] bg-[size:80px_80px]`} />
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#9F05F7]/10 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-[#DBA5FA]/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }} />
       </div>
@@ -233,17 +287,17 @@ function Hero() {
   );
 }
 
-function About() {
+function About({ theme }: { theme: Theme }) {
   return (
-    <section id="about" className="max-w-6xl mx-auto px-6 py-24 border-t border-[#9F05F7]/20 relative">
+    <section id="about" className={`max-w-6xl mx-auto px-6 py-24 border-t ${theme === "dark" ? "border-[#9F05F7]/20" : "border-gray-200"} relative`}>
       <div data-reveal className="grid md:grid-cols-[1fr_2fr] gap-16 items-start">
         <div>
-          <p className="font-mono text-sm text-[#DBA5FA] tracking-[0.25em] uppercase mb-4 font-medium">
+          <p className={`font-mono text-sm tracking-[0.25em] uppercase mb-4 font-medium ${theme === "dark" ? "text-[#DBA5FA]" : "text-[#9F05F7]"}`}>
             About
           </p>
-          <h2 className="text-4xl font-bold text-white">Who I am</h2>
+          <h2 className={`text-4xl font-bold ${theme === "dark" ? "text-white" : "text-gray-900"}`}>Who I am</h2>
         </div>
-        <div className="space-y-5 text-white/70 text-lg leading-relaxed font-medium">
+        <div className={`space-y-5 text-lg leading-relaxed font-medium ${theme === "dark" ? "text-white/70" : "text-gray-600"}`}>
           <p>
             I'm Divya Sharma, a 3rd-year B.Tech student in Computer Science & 
             Engineering at Lovely Professional University, Phagwara — specializing
@@ -268,9 +322,13 @@ function About() {
               { num: "6.96", label: "CGPA" },
               { num: "4", label: "Certifications" },
             ].map((s) => (
-              <div key={s.label} className="border border-[#9F05F7]/20 bg-gradient-to-br from-[#9F05F7]/5 to-transparent p-5 hover:border-[#DBA5FA]/40 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg hover:shadow-[#9F05F7]/20">
-                <div className="text-3xl font-bold text-white mb-1 bg-gradient-to-r from-[#9F05F7] to-[#DBA5FA] bg-clip-text text-transparent">{s.num}</div>
-                <div className="text-xs text-white/50 tracking-wide font-mono uppercase font-medium">{s.label}</div>
+              <div key={s.label} className={`border p-5 hover:border-[#DBA5FA]/40 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg ${
+                theme === "dark" 
+                  ? "border-[#9F05F7]/20 bg-gradient-to-br from-[#9F05F7]/5 to-transparent hover:shadow-[#9F05F7]/20" 
+                  : "border-gray-200 bg-gray-50 hover:shadow-[#9F05F7]/20"
+              }`}>
+                <div className="text-3xl font-bold mb-1 bg-gradient-to-r from-[#9F05F7] to-[#DBA5FA] bg-clip-text text-transparent">{s.num}</div>
+                <div className={`text-xs tracking-wide font-mono uppercase font-medium ${theme === "dark" ? "text-white/50" : "text-gray-500"}`}>{s.label}</div>
               </div>
             ))}
           </div>
@@ -280,14 +338,14 @@ function About() {
   );
 }
 
-function Projects() {
+function Projects({ theme }: { theme: Theme }) {
   return (
-    <section id="projects" className="max-w-6xl mx-auto px-6 py-24 border-t border-[#9F05F7]/20">
+    <section id="projects" className={`max-w-6xl mx-auto px-6 py-24 border-t ${theme === "dark" ? "border-[#9F05F7]/20" : "border-gray-200"}`}>
       <div data-reveal className="mb-12">
-        <p className="font-mono text-sm text-[#DBA5FA] tracking-[0.25em] uppercase mb-4 font-medium">
+        <p className={`font-mono text-sm tracking-[0.25em] uppercase mb-4 font-medium ${theme === "dark" ? "text-[#DBA5FA]" : "text-[#9F05F7]"}`}>
           Projects
         </p>
-        <h2 className="text-4xl font-bold text-white">Selected Work</h2>
+        <h2 className={`text-4xl font-bold ${theme === "dark" ? "text-white" : "text-gray-900"}`}>Selected Work</h2>
       </div>
 
       <div className="space-y-6">
@@ -296,7 +354,11 @@ function Projects() {
             key={p.num}
             data-reveal
             style={{ transitionDelay: `${i * 80}ms` }}
-            className="group border border-[#9F05F7]/20 hover:border-[#DBA5FA] transition-all duration-500 hover:bg-gradient-to-r hover:from-[#9F05F7]/5 hover:to-transparent cursor-default overflow-hidden relative"
+            className={`group border transition-all duration-500 hover:bg-gradient-to-r overflow-hidden relative ${
+              theme === "dark"
+                ? "border-[#9F05F7]/20 hover:border-[#DBA5FA] hover:from-[#9F05F7]/5 hover:to-transparent"
+                : "border-gray-200 hover:border-[#9F05F7] hover:from-[#9F05F7]/5 hover:to-transparent"
+            }`}
           >
             <div className="flex flex-col md:flex-row items-start gap-6 p-6 md:p-8">
               {/* Project Image */}
@@ -313,11 +375,11 @@ function Projects() {
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-4 mb-3">
                   <span className="font-mono text-sm text-[#9F05F7] font-bold">{p.num}</span>
-                  <h3 className="text-white font-bold text-xl group-hover:text-[#DBA5FA] transition-colors">
+                  <h3 className={`font-bold text-xl group-hover:text-[#DBA5FA] transition-colors ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
                     {p.title}
                   </h3>
                 </div>
-                <p className="text-white/60 text-base leading-relaxed max-w-2xl font-medium">
+                <p className={`text-base leading-relaxed max-w-2xl font-medium ${theme === "dark" ? "text-white/60" : "text-gray-600"}`}>
                   {p.desc}
                 </p>
                 <div className="flex flex-wrap gap-2 mt-4">
@@ -347,27 +409,39 @@ function Projects() {
   );
 }
 
-function Skills() {
+function Skills({ theme }: { theme: Theme }) {
   return (
-    <section id="skills" className="max-w-6xl mx-auto px-6 py-24 border-t border-[#9F05F7]/20">
+    <section id="skills" className={`max-w-6xl mx-auto px-6 py-24 border-t ${theme === "dark" ? "border-[#9F05F7]/20" : "border-gray-200"}`}>
       <div data-reveal className="mb-12">
-        <p className="font-mono text-sm text-[#DBA5FA] tracking-[0.25em] uppercase mb-4 font-medium">
+        <p className={`font-mono text-sm tracking-[0.25em] uppercase mb-4 font-medium ${theme === "dark" ? "text-[#DBA5FA]" : "text-[#9F05F7]"}`}>
           Skills
         </p>
-        <h2 className="text-4xl font-bold text-white">Toolkit</h2>
+        <h2 className={`text-4xl font-bold ${theme === "dark" ? "text-white" : "text-gray-900"}`}>Toolkit</h2>
       </div>
 
       <div data-reveal className="grid md:grid-cols-2 gap-8">
         {Object.entries(SKILLS).map(([cat, items]) => (
-          <div key={cat} className="bg-gradient-to-br from-[#9F05F7]/5 to-transparent p-6 border border-[#9F05F7]/20 hover:border-[#DBA5FA]/40 transition-all duration-300 transform hover:-translate-y-1">
-            <p className="font-mono text-sm text-[#DBA5FA] tracking-[0.2em] uppercase mb-4 border-b border-[#9F05F7]/20 pb-2 font-bold">
+          <div key={cat} className={`p-6 border transition-all duration-300 transform hover:-translate-y-1 ${
+            theme === "dark"
+              ? "bg-gradient-to-br from-[#9F05F7]/5 to-transparent border-[#9F05F7]/20 hover:border-[#DBA5FA]/40"
+              : "bg-gray-50 border-gray-200 hover:border-[#9F05F7]/40"
+          }`}>
+            <p className={`font-mono text-sm tracking-[0.2em] uppercase mb-4 border-b pb-2 font-bold ${
+              theme === "dark" 
+                ? "text-[#DBA5FA] border-[#9F05F7]/20" 
+                : "text-[#9F05F7] border-gray-200"
+            }`}>
               {cat}
             </p>
             <div className="flex flex-wrap gap-3">
               {items.map((skill) => (
                 <div
                   key={skill.name}
-                  className="group flex items-center gap-2 text-white font-medium bg-[#9F05F7]/10 hover:bg-[#9F05F7]/20 border border-[#9F05F7]/30 hover:border-[#DBA5FA] px-4 py-2 transition-all duration-200 cursor-default"
+                  className={`group flex items-center gap-2 font-medium px-4 py-2 transition-all duration-200 cursor-default ${
+                    theme === "dark"
+                      ? "text-white bg-[#9F05F7]/10 hover:bg-[#9F05F7]/20 border border-[#9F05F7]/30 hover:border-[#DBA5FA]"
+                      : "text-gray-700 bg-gray-100 hover:bg-[#9F05F7]/10 border border-gray-200 hover:border-[#9F05F7]"
+                  }`}
                 >
                   <img src={skill.icon} alt={skill.name} className="w-5 h-5 group-hover:scale-110 transition-transform" />
                   <span>{skill.name}</span>
@@ -380,18 +454,22 @@ function Skills() {
 
       {/* Certificates */}
       <div data-reveal className="mt-16">
-        <p className="font-mono text-sm text-[#DBA5FA] tracking-[0.25em] uppercase mb-6 font-medium">
+        <p className={`font-mono text-sm tracking-[0.25em] uppercase mb-6 font-medium ${theme === "dark" ? "text-[#DBA5FA]" : "text-[#9F05F7]"}`}>
           Certificates
         </p>
         <div className="grid md:grid-cols-2 gap-4">
           {CERTIFICATES.map((c) => (
-            <div key={c.title} className="bg-gradient-to-br from-[#9F05F7]/5 to-transparent border border-[#9F05F7]/20 p-6 hover:border-[#DBA5FA] transition-all duration-300 group transform hover:-translate-y-1">
+            <div key={c.title} className={`border p-6 transition-all duration-300 group transform hover:-translate-y-1 ${
+              theme === "dark"
+                ? "bg-gradient-to-br from-[#9F05F7]/5 to-transparent border-[#9F05F7]/20 hover:border-[#DBA5FA]"
+                : "bg-gray-50 border-gray-200 hover:border-[#9F05F7]"
+            }`}>
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <p className="text-white font-bold text-lg group-hover:text-[#DBA5FA] transition-colors">{c.title}</p>
+                  <p className={`font-bold text-lg group-hover:text-[#DBA5FA] transition-colors ${theme === "dark" ? "text-white" : "text-gray-900"}`}>{c.title}</p>
                   <p className="text-[#DBA5FA] text-sm font-medium mt-1">{c.issuer}</p>
                 </div>
-                <span className="font-mono text-xs text-white/40 font-medium bg-[#9F05F7]/20 px-3 py-1 rounded-full">{c.year}</span>
+                <span className={`font-mono text-xs font-medium px-3 py-1 rounded-full ${theme === "dark" ? "text-white/40 bg-[#9F05F7]/20" : "text-gray-500 bg-gray-200"}`}>{c.year}</span>
               </div>
             </div>
           ))}
@@ -401,18 +479,18 @@ function Skills() {
   );
 }
 
-function Contact() {
+function Contact({ theme }: { theme: Theme }) {
   return (
-    <section id="contact" className="max-w-6xl mx-auto px-6 py-24 border-t border-[#9F05F7]/20">
+    <section id="contact" className={`max-w-6xl mx-auto px-6 py-24 border-t ${theme === "dark" ? "border-[#9F05F7]/20" : "border-gray-200"}`}>
       <div data-reveal className="grid md:grid-cols-[1fr_2fr] gap-16 items-start">
         <div>
-          <p className="font-mono text-sm text-[#DBA5FA] tracking-[0.25em] uppercase mb-4 font-medium">
+          <p className={`font-mono text-sm tracking-[0.25em] uppercase mb-4 font-medium ${theme === "dark" ? "text-[#DBA5FA]" : "text-[#9F05F7]"}`}>
             Contact
           </p>
-          <h2 className="text-4xl font-bold text-white">Say hello</h2>
+          <h2 className={`text-4xl font-bold ${theme === "dark" ? "text-white" : "text-gray-900"}`}>Say hello</h2>
         </div>
         <div className="space-y-6">
-          <p className="text-white/70 text-lg leading-relaxed font-medium max-w-lg">
+          <p className={`text-lg leading-relaxed font-medium max-w-lg ${theme === "dark" ? "text-white/70" : "text-gray-600"}`}>
             Open to internships, collaborations, and interesting projects. Feel
             free to reach out — I usually respond within a day.
           </p>
@@ -427,13 +505,17 @@ function Contact() {
                 href={item.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between border border-[#9F05F7]/20 hover:border-[#DBA5FA] p-5 group transition-all duration-200 bg-gradient-to-r from-transparent to-transparent hover:from-[#9F05F7]/5 hover:to-transparent transform hover:-translate-y-1"
+                className={`flex items-center justify-between border p-5 group transition-all duration-200 transform hover:-translate-y-1 ${
+                  theme === "dark"
+                    ? "border-[#9F05F7]/20 hover:border-[#DBA5FA] bg-gradient-to-r from-transparent to-transparent hover:from-[#9F05F7]/5 hover:to-transparent"
+                    : "border-gray-200 hover:border-[#9F05F7] hover:bg-[#9F05F7]/5"
+                }`}
               >
                 <div className="flex items-center gap-6">
-                  <span className="font-mono text-xs text-[#DBA5FA] tracking-widest uppercase w-16 font-bold">{item.label}</span>
-                  <span className="text-white/70 group-hover:text-white text-base font-medium transition-colors">{item.value}</span>
+                  <span className={`font-mono text-xs tracking-widest uppercase w-16 font-bold ${theme === "dark" ? "text-[#DBA5FA]" : "text-[#9F05F7]"}`}>{item.label}</span>
+                  <span className={`text-base font-medium transition-colors ${theme === "dark" ? "text-white/70 group-hover:text-white" : "text-gray-600 group-hover:text-[#9F05F7]"}`}>{item.value}</span>
                 </div>
-                <span className="text-[#9F05F7] group-hover:text-[#DBA5FA] text-xl transition-colors font-bold transform group-hover:translate-x-1">↗</span>
+                <span className={`text-xl transition-colors font-bold transform group-hover:translate-x-1 ${theme === "dark" ? "text-[#9F05F7] group-hover:text-[#DBA5FA]" : "text-[#9F05F7]"}`}>↗</span>
               </a>
             ))}
           </div>
@@ -443,13 +525,13 @@ function Contact() {
   );
 }
 
-function Footer() {
+function Footer({ theme }: { theme: Theme }) {
   return (
-    <footer className="border-t border-[#9F05F7]/20 max-w-6xl mx-auto px-6 py-8 flex items-center justify-between flex-wrap gap-4">
-      <span className="font-mono text-sm text-white/40 tracking-widest uppercase font-medium">
+    <footer className={`border-t max-w-6xl mx-auto px-6 py-8 flex items-center justify-between flex-wrap gap-4 ${theme === "dark" ? "border-[#9F05F7]/20" : "border-gray-200"}`}>
+      <span className={`font-mono text-sm tracking-widest uppercase font-medium ${theme === "dark" ? "text-white/40" : "text-gray-400"}`}>
         Divya Sharma · 2025
       </span>
-      <span className="font-mono text-sm text-[#DBA5FA]/40 font-medium">
+      <span className={`font-mono text-sm font-medium ${theme === "dark" ? "text-[#DBA5FA]/40" : "text-gray-400"}`}>
         B.Tech CSE · LPU · Phagwara
       </span>
     </footer>
@@ -460,9 +542,10 @@ function Footer() {
 
 export default function Home() {
   useReveal();
+  const { theme, toggleTheme } = useTheme();
 
   return (
-    <main className="bg-[#0a0a0a] min-h-screen relative overflow-x-hidden" style={{ fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif" }}>
+    <main className={`min-h-screen relative overflow-x-hidden ${theme === "dark" ? "bg-[#0a0a0a]" : "bg-gray-50"}`} style={{ fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif" }}>
       {/* Google font import — add to layout.tsx or globals.css in real project */}
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap');
@@ -525,18 +608,23 @@ export default function Home() {
         .particle:nth-child(8) { left: 50%; width: 25px; height: 25px; animation-delay: 15s; animation-duration: 45s; }
         .particle:nth-child(9) { left: 20%; width: 15px; height: 15px; animation-delay: 2s; animation-duration: 35s; }
         .particle:nth-child(10) { left: 85%; width: 150px; height: 150px; animation-delay: 0s; animation-duration: 11s; }
+
+        /* Light mode adjustments */
+        .light .particle {
+          background: rgba(159, 5, 247, 0.08);
+        }
       `}</style>
 
-      <ParticleEffect />
+      <ParticleEffect theme={theme} />
       
       <div className="relative z-10">
-        <Navbar />
-        <Hero />
-        <About />
-        <Projects />
-        <Skills />
-        <Contact />
-        <Footer />
+        <Navbar theme={theme} toggleTheme={toggleTheme} />
+        <Hero theme={theme} />
+        <About theme={theme} />
+        <Projects theme={theme} />
+        <Skills theme={theme} />
+        <Contact theme={theme} />
+        <Footer theme={theme} />
       </div>
     </main>
   );
