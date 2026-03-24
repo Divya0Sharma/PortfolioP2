@@ -931,7 +931,7 @@ function Contact({ theme }: { theme: Theme }) {
             {[
               { label: "Email", value: "divya.sharma2765@gmail.com", href: "mailto:divya.sharma2765@gmail.com" },
               { label: "LinkedIn", value: "linkedin.com/in/divya2765sharma", href: "https://linkedin.com/in/divya2765sharma" },
-              { label: "GitHub", value: "github.com/Divya0Sharma", href: "https://github.com/DivyaSharma" },
+              { label: "GitHub", value: "https://github.com/Divya0Sharma", href: "https://github.com/Divya0Sharma" },
             ].map((item) => (
               <a
                 key={item.label}
