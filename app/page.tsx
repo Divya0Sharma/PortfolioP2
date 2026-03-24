@@ -179,120 +179,116 @@ function ParticleEffect({ theme }: { theme: Theme }) {
 // ─── Infographics Component ───────────────────────────────────────────────────
 
 function Infographics({ theme }: { theme: Theme }) {
-  const stats = [
-    { label: "Projects Completed", value: "3+", icon: "📊", color: "from-purple-500 to-pink-500" },
-    { label: "Problems Solved", value: "100+", icon: "💻", color: "from-blue-500 to-purple-500" },
-    { label: "Certifications", value: "4", icon: "📜", color: "from-green-500 to-teal-500" },
-    { label: "Tech Skills", value: "15+", icon: "⚙️", color: "from-orange-500 to-red-500" },
+  const contributions = [
+    { 
+      label: "LeetCode", 
+      value: "50+", 
+      level: "Intermediate",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/leetcode/leetcode-original.svg",
+      color: "from-yellow-500 to-orange-500" 
+    },
+    { 
+      label: "CodeChef", 
+      value: "50+", 
+      level: "Intermediate",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/codechef/codechef-original.svg",
+      color: "from-brown-500 to-amber-500" 
+    },
+    { 
+      label: "GitHub", 
+      value: "100+", 
+      level: "Active",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+      color: "from-gray-500 to-gray-700" 
+    },
   ];
 
-  const contributions = [
-    { label: "LeetCode", value: "50+", icon: "⚡", color: "from-yellow-500 to-orange-500" },
-    { label: "CodeChef", value: "50+", icon: "🍜", color: "from-brown-500 to-amber-500" },
-    { label: "GitHub Commits", value: "100+", icon: "📈", color: "from-gray-500 to-gray-700" },
+  const competencies = [
+    { name: "Data Analysis", level: "Expert" },
+    { name: "Machine Learning", level: "Intermediate" },
+    { name: "Web Development", level: "Intermediate" },
+    { name: "Data Structures & Algorithms", level: "Expert" },
   ];
+
+  const getLevelColor = (level: string, theme: string) => {
+    if (theme === "dark") {
+      switch(level) {
+        case "Expert": return "text-green-400";
+        case "Intermediate": return "text-blue-400";
+        default: return "text-yellow-400";
+      }
+    } else {
+      switch(level) {
+        case "Expert": return "text-green-600";
+        case "Intermediate": return "text-blue-600";
+        default: return "text-yellow-600";
+      }
+    }
+  };
+
+  const getLevelBgColor = (level: string, theme: string) => {
+    if (theme === "dark") {
+      switch(level) {
+        case "Expert": return "bg-green-500/20";
+        case "Intermediate": return "bg-blue-500/20";
+        default: return "bg-yellow-500/20";
+      }
+    } else {
+      switch(level) {
+        case "Expert": return "bg-green-100";
+        case "Intermediate": return "bg-blue-100";
+        default: return "bg-yellow-100";
+      }
+    }
+  };
 
   return (
-    <div className="py-12">
-      {/* Main Stats Grid */}
-      <div data-reveal className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-        {stats.map((stat, idx) => (
-          <div
-            key={idx}
-            className={`relative overflow-hidden rounded-xl p-6 text-center transition-all duration-300 transform hover:-translate-y-2 ${
-              theme === "dark"
-                ? "bg-gradient-to-br from-[#9F05F7]/10 to-[#DBA5FA]/10 border border-[#9F05F7]/20 hover:border-[#DBA5FA]/40"
-                : "bg-gradient-to-br from-purple-50 to-pink-50 border border-purple-200 hover:border-purple-400 shadow-lg"
-            }`}
-          >
-            <div className={`absolute top-0 right-0 w-20 h-20 rounded-full blur-2xl bg-gradient-to-r ${stat.color} opacity-20`}></div>
-            <div className="text-4xl mb-3">{stat.icon}</div>
-            <div className={`text-3xl font-bold mb-1 bg-gradient-to-r ${stat.color} bg-clip-text text-transparent`}>
-              {stat.value}
-            </div>
-            <div className={`text-sm font-medium ${theme === "dark" ? "text-white/60" : "text-gray-600"}`}>
-              {stat.label}
-            </div>
-          </div>
-        ))}
-      </div>
-
+    <div className="py-8">
       {/* Contribution Stats */}
       <div data-reveal className="grid grid-cols-3 gap-4 mb-12">
         {contributions.map((contrib, idx) => (
           <div
             key={idx}
-            className={`rounded-xl p-5 text-center transition-all duration-300 ${
+            className={`rounded-xl p-5 text-center transition-all duration-300 transform hover:-translate-y-1 ${
               theme === "dark"
-                ? "bg-[#9F05F7]/5 border border-[#9F05F7]/20"
-                : "bg-gradient-to-br from-gray-50 to-purple-50 border border-purple-200"
+                ? "bg-[#9F05F7]/5 border border-[#9F05F7]/20 hover:border-[#DBA5FA]"
+                : "bg-gradient-to-br from-gray-50 to-purple-50 border border-purple-200 hover:border-[#9F05F7]"
             }`}
           >
-            <div className="text-2xl mb-2">{contrib.icon}</div>
-            <div className={`text-xl font-bold ${theme === "dark" ? "text-white" : "text-gray-800"}`}>
+            <div className="flex justify-center mb-3">
+              <img 
+                src={contrib.icon} 
+                alt={contrib.label} 
+                className={`w-10 h-10 ${contrib.label === "GitHub" && theme === "light" ? "filter brightness-0" : ""}`}
+              />
+            </div>
+            <div className={`text-2xl font-bold ${theme === "dark" ? "text-white" : "text-gray-800"}`}>
               {contrib.value}
             </div>
-            <div className={`text-xs font-medium ${theme === "dark" ? "text-white/50" : "text-gray-500"}`}>
+            <div className={`text-sm font-medium ${theme === "dark" ? "text-white/50" : "text-gray-500"}`}>
               {contrib.label}
+            </div>
+            <div className={`text-xs font-semibold mt-2 px-2 py-1 rounded-full inline-block ${getLevelBgColor(contrib.level, theme)} ${getLevelColor(contrib.level, theme)}`}>
+              {contrib.level}
             </div>
           </div>
         ))}
       </div>
 
-      {/* Skill Proficiency Bars */}
+      {/* Core Competencies with Level Indicators */}
       <div data-reveal className="mb-8">
         <h3 className={`text-lg font-semibold mb-4 ${theme === "dark" ? "text-white" : "text-gray-800"}`}>
           Core Competencies
         </h3>
-        <div className="space-y-3">
-          {[
-            { name: "Data Analysis", level: 85 },
-            { name: "Machine Learning", level: 75 },
-            { name: "Web Development", level: 80 },
-            { name: "Data Structures & Algorithms", level: 85 },
-          ].map((skill) => (
-            <div key={skill.name}>
-              <div className="flex justify-between text-sm mb-1">
-                <span className={theme === "dark" ? "text-white/70" : "text-gray-700"}>{skill.name}</span>
-                <span className={theme === "dark" ? "text-[#DBA5FA]" : "text-[#9F05F7]"}>{skill.level}%</span>
-              </div>
-              <div className={`h-2 rounded-full overflow-hidden ${theme === "dark" ? "bg-white/10" : "bg-gray-200"}`}>
-                <div
-                  className="h-full rounded-full bg-gradient-to-r from-[#9F05F7] to-[#DBA5FA] transition-all duration-1000"
-                  style={{ width: `${skill.level}%` }}
-                ></div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Tech Stack Distribution */}
-      <div data-reveal>
-        <h3 className={`text-lg font-semibold mb-4 ${theme === "dark" ? "text-white" : "text-gray-800"}`}>
-          Technology Stack Distribution
-        </h3>
-        <div className="flex flex-wrap gap-2">
-          {[
-            { name: "Python", percentage: 30, color: "from-blue-500 to-cyan-500" },
-            { name: "C++", percentage: 25, color: "from-blue-600 to-indigo-600" },
-            { name: "JavaScript", percentage: 20, color: "from-yellow-500 to-orange-500" },
-            { name: "SQL", percentage: 15, color: "from-green-500 to-emerald-500" },
-            { name: "Other", percentage: 10, color: "from-purple-500 to-pink-500" },
-          ].map((tech) => (
-            <div key={tech.name} className="flex-1 min-w-[100px]">
-              <div className={`text-xs text-center mb-1 ${theme === "dark" ? "text-white/60" : "text-gray-600"}`}>
-                {tech.name}
-              </div>
-              <div className={`h-20 rounded-lg overflow-hidden bg-gradient-to-b ${tech.color} relative group`}>
-                <div
-                  className="absolute bottom-0 left-0 right-0 bg-black/20 transition-all duration-500 group-hover:bg-black/10"
-                  style={{ height: `${100 - tech.percentage}%` }}
-                ></div>
-                <div className="absolute inset-0 flex items-center justify-center text-white font-bold text-sm opacity-0 group-hover:opacity-100 transition-opacity">
-                  {tech.percentage}%
-                </div>
-              </div>
+        <div className="space-y-4">
+          {competencies.map((skill) => (
+            <div key={skill.name} className="flex items-center justify-between">
+              <span className={`text-sm font-medium ${theme === "dark" ? "text-white/70" : "text-gray-700"}`}>
+                {skill.name}
+              </span>
+              <span className={`text-sm font-semibold px-3 py-1 rounded-full ${getLevelBgColor(skill.level, theme)} ${getLevelColor(skill.level, theme)}`}>
+                {skill.level}
+              </span>
             </div>
           ))}
         </div>
@@ -300,7 +296,6 @@ function Infographics({ theme }: { theme: Theme }) {
     </div>
   );
 }
-
 // ─── Components ──────────────────────────────────────────────────────────────
 
 function Navbar({ theme, toggleTheme }: { theme: Theme; toggleTheme: () => void }) {
@@ -936,7 +931,7 @@ function Contact({ theme }: { theme: Theme }) {
             {[
               { label: "Email", value: "divya.sharma2765@gmail.com", href: "mailto:divya.sharma2765@gmail.com" },
               { label: "LinkedIn", value: "linkedin.com/in/divya2765sharma", href: "https://linkedin.com/in/divya2765sharma" },
-              { label: "GitHub", value: "github.com/DivyaSharma", href: "https://github.com/DivyaSharma" },
+              { label: "GitHub", value: "github.com/Divya0Sharma", href: "https://github.com/DivyaSharma" },
             ].map((item) => (
               <a
                 key={item.label}
