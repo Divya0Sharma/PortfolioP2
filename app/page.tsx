@@ -373,6 +373,51 @@ function About({ theme }: { theme: Theme }) {
 }
 
 function Projects({ theme }: { theme: Theme }) {
+  const updatedProjects = [
+    {
+      num: "01",
+      title: "Tele-Law Services in India - Data Analysis & Visualization",
+      desc: `A data-driven analysis of legal aid accessibility across states, districts, social categories, and genders in India.`,
+      points: [
+        "Analyzed state-wise and district-wise trends in Tele-Law case registrations",
+        "Examined gender-based legal advice patterns and social category representation (General, OBC, SC, ST)",
+        "Evaluated CSC (Common Service Centers) performance in delivering legal advice",
+        "Implemented predictive analysis and visualizations using Pandas, Seaborn, and Matplotlib"
+      ],
+      stack: ["Python", "Pandas", "Seaborn", "Matplotlib", "Data Analysis"],
+      link: "https://www.linkedin.com/feed/update/urn:li:activity:7316841611781410816/",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    },
+    {
+      num: "02",
+      title: "Train Platform Allotment System",
+      desc: `A greedy scheduling algorithm implementation to optimize train platform allocation and prevent congestion.`,
+      points: [
+        "Implemented Min-Heap Priority Queue to compute minimum platforms required for train schedules",
+        "Developed interactive web UI with real-time input validation and allocation display",
+        "Applied greedy algorithm approach to handle overlapping train schedules efficiently",
+        "Strengthened understanding of data structures and algorithm optimization"
+      ],
+      stack: ["C++", "STL", "HTML", "CSS", "JavaScript", "Data Structures"],
+      link: "https://github.com/Divya0Sharma/Train_Allotment_System",
+      image: "https://images.unsplash.com/photo-1474487548417-781cb71495f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    },
+    {
+      num: "03",
+      title: "Travel Analytics Dashboard - Power BI",
+      desc: `An interactive business intelligence dashboard transforming travel data into actionable insights.`,
+      points: [
+        "Built dynamic KPI cards tracking total travelers, flights, hotel nights, and revenue metrics",
+        "Analyzed monthly flight trends, booking patterns, and demographic segmentation by company, gender, and age",
+        "Implemented hotel analytics including stay duration, pricing analysis, and location-based insights",
+        "Applied data cleaning, modeling, and DAX measures to create intuitive visual storytelling"
+      ],
+      stack: ["Power BI", "Power Query", "DAX", "Data Modeling", "Dashboard Design"],
+      link: "https://sites.google.com/view/travel2019powerbidashboard/home?pli=1",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    },
+  ];
+
   return (
     <section id="projects" className={`max-w-6xl mx-auto px-6 py-24 border-t ${theme === "dark" ? "border-[#9F05F7]/20" : "border-gray-200"}`}>
       <div data-reveal className="mb-12">
@@ -383,7 +428,7 @@ function Projects({ theme }: { theme: Theme }) {
       </div>
 
       <div className="space-y-6">
-        {PROJECTS.map((p, i) => (
+        {updatedProjects.map((p, i) => (
           <div
             key={p.num}
             data-reveal
@@ -396,7 +441,7 @@ function Projects({ theme }: { theme: Theme }) {
           >
             <div className="flex flex-col md:flex-row items-start gap-6 p-6 md:p-8">
               {/* Project Image */}
-              <div className="md:w-1/3 overflow-hidden rounded-lg">
+              <div className="md:w-1/3 w-full overflow-hidden rounded-lg">
                 <img 
                   src={p.image} 
                   alt={p.title}
@@ -413,9 +458,17 @@ function Projects({ theme }: { theme: Theme }) {
                     {p.title}
                   </h3>
                 </div>
-                <p className={`text-base leading-relaxed max-w-2xl font-medium ${theme === "dark" ? "text-white/60" : "text-gray-600"}`}>
+                <p className={`text-base leading-relaxed font-medium mb-3 ${theme === "dark" ? "text-white/70" : "text-gray-700"}`}>
                   {p.desc}
                 </p>
+                <ul className={`space-y-1.5 mb-4 ${theme === "dark" ? "text-white/60" : "text-gray-600"}`}>
+                  {p.points.map((point, idx) => (
+                    <li key={idx} className="text-sm leading-relaxed flex items-start gap-2">
+                      <span className="text-[#9F05F7] mt-1">•</span>
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
                 <div className="flex flex-wrap gap-2 mt-4">
                   {p.stack.map((t) => (
                     <span
@@ -431,6 +484,8 @@ function Projects({ theme }: { theme: Theme }) {
               {/* Link Arrow */}
               <a
                 href={p.link}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-[#9F05F7] group-hover:text-[#DBA5FA] text-2xl transition-all duration-200 flex-shrink-0 mt-1 font-bold transform group-hover:translate-x-1 group-hover:-translate-y-1"
               >
                 ↗
