@@ -279,7 +279,7 @@ function Hero({ theme }: { theme: Theme }) {
           </div>
         </div>
 
-        {/* Right side - Photo with professional frame */}
+        {/* Right side - Photo with professional frame - Taller vertical shape */}
         <div className="flex-1 flex justify-center md:justify-end">
           <div className="relative group">
             {/* Animated gradient border */}
@@ -291,7 +291,8 @@ function Hero({ theme }: { theme: Theme }) {
                 <img
                   src="/IMG_20260324_195242.jpg"
                   alt="Divya Sharma"
-                  className="w-80 h-80 md:w-96 md:h-96 object-cover rounded-xl transform transition-all duration-500 group-hover:scale-105"
+                  className="w-72 h-96 md:w-80 md:h-[28rem] lg:w-96 lg:h-[32rem] object-cover object-top rounded-xl transform transition-all duration-500 group-hover:scale-105"
+                  style={{ objectPosition: "center 20%" }}
                 />
                 
                 {/* Overlay gradient */}
