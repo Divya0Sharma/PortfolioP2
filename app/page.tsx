@@ -219,8 +219,8 @@ function Navbar({ theme, toggleTheme }: { theme: Theme; toggleTheme: () => void 
             {theme === "dark" ? "☀️" : "🌙"}
           </button>
           <a
-            href="/resume.pdf"
-            download
+            href="/re.pdf"
+            download="Divya_Sharma_Resume.pdf"
             className={`text-xs font-mono border px-4 py-2 transition-all duration-200 tracking-widest uppercase ${
               theme === "dark"
                 ? "border-[#9F05F7]/30 text-[#DBA5FA] hover:text-white hover:bg-[#9F05F7]/20 hover:border-[#DBA5FA]"
