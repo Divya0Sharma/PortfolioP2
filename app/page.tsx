@@ -378,10 +378,10 @@ function Hero({ theme }: { theme: Theme }) {
             B.Tech CSE · Data Science & Cloud · LPU
           </p>
           <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold leading-[1.0] tracking-tight">
-            <span className={theme === "dark" ? "text-white" : "text-gray-900"}>Divya</span>
+            <span className={theme === "dark" ? "text-white" : "text-gray-900"}>Hi, I'm</span>
             <br />
             <span className="bg-gradient-to-r from-[#9F05F7] via-[#DBA5FA] to-[#9F05F7] bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient">
-              Sharma
+              Divya
             </span>
           </h1>
           <p className={`max-w-xl text-lg md:text-xl leading-relaxed font-medium ${theme === "dark" ? "text-white/70" : "text-gray-600"}`}>
@@ -420,7 +420,7 @@ function Hero({ theme }: { theme: Theme }) {
               <div className="relative overflow-hidden rounded-xl">
                 <img
                   src="/IMG_20260324_195242.jpg"
-                  alt="Divya Sharma"
+                  alt="Divya"
                   className="w-72 h-96 md:w-80 md:h-[28rem] lg:w-96 lg:h-[32rem] object-cover object-top rounded-xl transform transition-all duration-500 group-hover:scale-105"
                   style={{ objectPosition: "center 20%" }}
                 />
@@ -962,7 +962,7 @@ function Footer({ theme }: { theme: Theme }) {
   return (
     <footer className={`border-t max-w-6xl mx-auto px-6 py-8 flex items-center justify-between flex-wrap gap-4 ${theme === "dark" ? "border-[#9F05F7]/20" : "border-gray-200"}`}>
       <span className={`font-mono text-sm tracking-widest uppercase font-medium ${theme === "dark" ? "text-white/40" : "text-gray-400"}`}>
-        Divya Sharma · 2025
+        Divya · 2026
       </span>
       <span className={`font-mono text-sm font-medium ${theme === "dark" ? "text-[#DBA5FA]/40" : "text-gray-400"}`}>
         B.Tech CSE · LPU · Phagwara
