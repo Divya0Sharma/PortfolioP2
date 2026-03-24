@@ -414,7 +414,7 @@ function Projects({ theme }: { theme: Theme }) {
       ],
       stack: ["Power BI", "Power Query", "DAX", "Data Modeling", "Dashboard Design"],
       link: "https://sites.google.com/view/travel2019powerbidashboard/home?pli=1",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: "/ds.jpg",
     },
   ];
 
