@@ -10,7 +10,7 @@ const PROJECTS = [
   {
     num: "01",
     title: "Tele-Law Services in India - Data Analysis & Visualization",
-    desc: `A data-driven analysis of legal aid accessibility across states, districts, social categories, and genders in India.`,
+    desc: `A data driven analysis of legal aid accessibility across states, districts, social categories, and genders in India.`,
     points: [
       "Analyzed state-wise and district-wise trends in Tele-Law case registrations",
       "Examined gender-based legal advice patterns and social category representation (General, OBC, SC, ST)",
@@ -378,15 +378,15 @@ function Hero({ theme }: { theme: Theme }) {
             B.Tech CSE · Data Science & Cloud · LPU
           </p>
           <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold leading-[1.0] tracking-tight">
-            <span className={theme === "dark" ? "text-white" : "text-gray-900"}>Hi, I'm</span>
+            <span className={theme === "dark" ? "text-white" : "text-gray-900"}>Hi, I am</span>
             <br />
             <span className="bg-gradient-to-r from-[#9F05F7] via-[#DBA5FA] to-[#9F05F7] bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient">
               Divya
             </span>
           </h1>
           <p className={`max-w-xl text-lg md:text-xl leading-relaxed font-medium ${theme === "dark" ? "text-white/70" : "text-gray-600"}`}>
-            Third-year CS student building at the intersection of data science,
-            machine learning, and full-stack web. Currently sharpening DSA and
+            Third year CS student building at the intersection of data science,
+            machine learning, and fullstack web. Currently sharpening DSA and
             shipping projects that solve real problems.
           </p>
           <div className="flex gap-4 pt-4">
@@ -463,8 +463,8 @@ function About({ theme }: { theme: Theme }) {
         </div>
         <div className={`space-y-5 text-lg leading-relaxed font-medium ${theme === "dark" ? "text-white/70" : "text-gray-600"}`}>
           <p>
-            I'm Divya Sharma, a 3rd-year B.Tech student in Computer Science & 
-            Engineering at Lovely Professional University, Phagwara — specializing
+            I'm Divya, a 3rd year B.Tech student in Computer Science & 
+            Engineering at Lovely Professional University, Phagwara. I specialize
             in Data Science and Cloud Computing.
           </p>
           <p>
@@ -474,7 +474,7 @@ function About({ theme }: { theme: Theme }) {
             actually work in production.
           </p>
           <p>
-            Outside of projects, I stay consistent on competitive programming —
+            Outside of projects, I stay consistent on competitive programming with
             100+ problems on LeetCode and CodeChef, CodeChef rating 824 (Div 4).
             I believe the fundamentals matter.
           </p>
@@ -925,7 +925,7 @@ function Contact({ theme }: { theme: Theme }) {
         <div className="space-y-6">
           <p className={`text-lg leading-relaxed font-medium max-w-lg ${theme === "dark" ? "text-white/70" : "text-gray-600"}`}>
             Open to internships, collaborations, and interesting projects. Feel
-            free to reach out — I usually respond within a day.
+            free to reach out.
           </p>
           <div className="space-y-3">
             {[
